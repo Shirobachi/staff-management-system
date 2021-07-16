@@ -65,9 +65,27 @@ class EmployeeController extends Controller
      * @param  \App\Models\employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(employee $employee)
+    public function edit($id, request $r)
     {
-        //
+      $r->validate([
+        'birthDate' => 'date',
+        'firstName' => 'min:3|max:14',
+        'lastName' => 'min:3|max:16',
+        'gender' => 'in:M,F',
+        'hireDate' => 'date'
+      ]);
+
+      $temp = employee::findOrFail($id);
+
+      $temp -> birthDate = $r->birthDate;
+      $temp -> firstName = $r->firstName;
+      $temp -> lastName = $r->lastName;
+      $temp -> gender = $r->gender;
+      $temp -> hireDate = $r->hireDate;
+
+      $temp -> save();
+
+      return redirect(url()->previous());
     }
 
     /**

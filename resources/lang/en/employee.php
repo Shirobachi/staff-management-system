@@ -2,6 +2,7 @@
 
 return [
   'new' => 'New employee',
+  'edit' => 'Edit employee',
   'birthDate' => 'Birth date',
   'firstName' => 'First name',
   'lastName' => 'Last name',

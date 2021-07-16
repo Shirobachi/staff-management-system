@@ -10,5 +10,6 @@ return [
   'departments' => 'Departments',
   'titles' => 'Titles',
   'salaries' => 'Salaries',
+  'edit' => 'Edit',
   '' => '',
 ];

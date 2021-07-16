@@ -24,6 +24,7 @@ Route::prefix('dashboard/employees')->group(function () {
   Route::get('/', [accessController::class, 'employees']) -> name('employees');  
   Route::post('new', [EmployeeController::class, 'create']);  
   Route::get('/delete/{id}', [EmployeeController::class, 'destroy']);  
+  Route::post('/edit/{id}', [EmployeeController::class, 'edit']);  
 });
 Route::prefix('dashboard/managers')->group(function () {
   Route::get('/', [accessController::class, 'managers']) -> name('managers');  
