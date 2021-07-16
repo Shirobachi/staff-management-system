@@ -14,5 +14,7 @@ Route::post('register', [UserController::class, 'create']);
 
 Route::get('/logout', function () {
   session()->forget('userID');
-  return redirect(url('/'));
+  $info['desc'] = __('auth.logOutOk');
+  return view('auth.login', compact('info'));
+});
 });
