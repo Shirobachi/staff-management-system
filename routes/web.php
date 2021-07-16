@@ -11,3 +11,8 @@ Route::get('register', [accessController::class, 'register']);
 
 Route::post('/', [UserController::class, 'index']);
 Route::post('register', [UserController::class, 'create']);
+
+Route::get('/logout', function () {
+  session()->forget('userID');
+  return redirect(url('/'));
+});
