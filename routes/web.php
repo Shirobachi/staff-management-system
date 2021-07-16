@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\accessController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EmployeeController;
 
 
 Route::get('/', [accessController::class, 'login']);
@@ -18,12 +19,23 @@ Route::get('/logout', function () {
   return view('auth.login', compact('info'));
 });
 
-Route::get(env('DASHBOARD', 'dashboard'), [accessController::class, 'employees']) -> name('dashboard');
-Route::get('dashboard/managers', [accessController::class, 'managers']) -> name('managers');
-Route::get('dashboard/departments', [accessController::class, 'departments']) -> name('departments');
-Route::get('dashboard/titles', [accessController::class, 'titles']) -> name('titles');
-Route::get('dashboard/salaries', [accessController::class, 'salaries']) -> name('salaries');
 
+Route::prefix('dashboard/employees')->group(function () {
+  Route::get('/', [accessController::class, 'employees']) -> name('employees');  
+  Route::post('new', [EmployeeController::class, 'create']);  
+});
+Route::prefix('dashboard/managers')->group(function () {
+  Route::get('/', [accessController::class, 'managers']) -> name('managers');  
+});
+Route::prefix('dashboard/departments')->group(function () {
+  Route::get('/', [accessController::class, 'departments']) -> name('departments');  
+});
+Route::prefix('dashboard/titles')->group(function () {
+  Route::get('/', [accessController::class, 'titles']) -> name('titles');  
+});
+Route::prefix('dashboard/salaries')->group(function () {
+  Route::get('/', [accessController::class, 'salaries']) -> name('salaries');  
+});
 
 Route::get('/test', function () {
   return view('dashboard.dept');
