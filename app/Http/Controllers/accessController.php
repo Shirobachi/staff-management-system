@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\employee;
+
 use Illuminate\Http\Request;
 
 class accessController extends Controller
@@ -20,9 +22,9 @@ class accessController extends Controller
             return view('auth.register');
     }
 
-    function redirect($path, $view){
+    function redirect($path, $view, $data = ''){
       if(session()->has('userID')){
-        return view('dashboard.' . $view, compact('path'));
+        return view('dashboard.' . $view, compact('path', 'data'));
       }
       else{
         $info['desc'] = __('auth.401');
@@ -33,7 +35,9 @@ class accessController extends Controller
     }
     
     function employees(){
-      return self::redirect('employees', 'employees');
+      $data = employee::all();
+
+      return self::redirect('employees', 'employees', $data);
     }
     
     function managers(){
