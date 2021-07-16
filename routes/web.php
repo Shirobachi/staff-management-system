@@ -42,3 +42,7 @@ Route::prefix('dashboard/salaries')->group(function () {
 Route::get('/test', function () {
   return view('dashboard.dept');
 });
+
+Route::get('/debug-sentry', function () {
+  throw new Exception('My first Sentry error!');
+});
