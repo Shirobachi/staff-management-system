@@ -38,11 +38,3 @@ Route::prefix('dashboard/titles')->group(function () {
 Route::prefix('dashboard/salaries')->group(function () {
   Route::get('/', [accessController::class, 'salaries']) -> name('salaries');  
 });
-
-Route::get('/test', function () {
-  return view('dashboard.dept');
-});
-
-Route::get('/debug-sentry', function () {
-  throw new Exception('My first Sentry error!');
-});
