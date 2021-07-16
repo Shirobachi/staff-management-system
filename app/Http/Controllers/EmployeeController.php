@@ -88,8 +88,10 @@ class EmployeeController extends Controller
      * @param  \App\Models\employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(employee $employee)
+    public function destroy($id)
     {
-        //
+      employee::findOrFail($id)->delete();
+
+      return redirect(url()->previous());
     }
 }

@@ -13,6 +13,7 @@
         <th scope="col">{{__('employee.lastName')}}</th>
         <th scope="col">{{__('employee.gender')}}</th>
         <th scope="col">{{__('employee.hireDate')}}</th>
+        <th scope="col"><i class="bi bi-gear-fill"></i></th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,11 @@
         <td>{{$d->lastName}}</td>
         <td>{{$d->gender == "M" ? __('employee.male') : __('employee.female')}}</td>
         <td>{{$d->hireDate}}</td>
+        <td>
+          <a href="{{url()->current()}}/delete/{{$d->id}}">
+            <i class="text-danger bi bi-trash"></i>
+          </a>
+        </td>
       </tr>
       @endforeach
       <tr>
