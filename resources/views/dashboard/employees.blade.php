@@ -27,7 +27,7 @@
       </tr>
       @endforeach
       <tr>
-        <td style="text-align: center;" colspan="6">
+        <td style="text-align: center;" colspan="7">
           <i class="modalLink bi bi-plus-circle-dotted" data-bs-toggle="modal" data-bs-target="#newEmployee"></i>
         </td>
       </tr>
