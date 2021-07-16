@@ -10,14 +10,14 @@ class accessController extends Controller
 {
     function login(){
         if(session()->has('userID'))
-            return view('dashboard.employees');
+            return self::employees();
         else
             return view('auth.login');
     }
 
     function register(){
         if(session()->has('userID'))
-            return view('dashboard.employees');
+            return self::employees();
         else
             return view('auth.register');
     }
