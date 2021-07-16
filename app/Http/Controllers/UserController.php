@@ -19,7 +19,7 @@ class UserController extends Controller
 
       if($user && Hash::check($r->password, $user->password)){
           session()->put('userID', $user->id);
-          return redirect(url(env('DASHBOARD', 'dashboard')));
+          return redirect(url('dashboard/employees'));
       }
       else{
           $info['desc'] = __('auth.loginNo');
