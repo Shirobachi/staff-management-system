@@ -25,7 +25,7 @@ class UserController extends Controller
           $info['desc'] = __('auth.loginNo');
           $info['type'] = 'danger';
 
-          return view('login', compact('info'));
+          return view('auth.login', compact('info'));
       }
   }
 
@@ -51,7 +51,7 @@ class UserController extends Controller
   
       $info['desc'] = __('auth.registerOk');
   
-      return(view('login', compact('info')));
+      return(view('auth.login', compact('info')));
   }
 
     /**
