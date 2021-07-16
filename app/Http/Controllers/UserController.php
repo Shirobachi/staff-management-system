@@ -13,10 +13,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $r)
     {
-        //
-    }
+      $user = user::where('login', $r->login) -> first();
+
+      if($user && Hash::check($r->password, $user->password)){
+          session()->put('userID', $user->id);
+          return redirect(url(env('DASHBOARD', 'dashboard')));
+      }
+      else{
+          $info['desc'] = 'Account not found!';
+          $info['type'] = 'danger';
+
+          return view('login', compact('info'));
+      }
+  }
 
     /**
      * Show the form for creating a new resource.
