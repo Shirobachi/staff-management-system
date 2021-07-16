@@ -9,4 +9,5 @@ return [
     'login' => 'Log in!', 
     'register' => 'Register now!', 
     'registerOk' => 'Register successful!',
+    'loginNo' => 'Account not found!'
 ];

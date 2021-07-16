@@ -22,7 +22,7 @@ class UserController extends Controller
           return redirect(url(env('DASHBOARD', 'dashboard')));
       }
       else{
-          $info['desc'] = 'Account not found!';
+          $info['desc'] = __('auth.loginNo');
           $info['type'] = 'danger';
 
           return view('login', compact('info'));
