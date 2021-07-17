@@ -6,6 +6,7 @@ use App\Http\Controllers\accessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\deptManagerController;
 
 
 Route::get('/', [accessController::class, 'login']);
@@ -29,6 +30,9 @@ Route::prefix('dashboard/employees')->group(function () {
 });
 Route::prefix('dashboard/managers')->group(function () {
   Route::get('/', [accessController::class, 'managers']) -> name('managers');  
+  Route::post('new', [deptManagerController::class, 'create']);  
+  Route::get('/delete/{id}', [deptManagerController::class, 'destroy']);  
+  Route::post('/edit/{id}', [deptManagerController::class, 'edit']);  
 });
 Route::prefix('dashboard/departments')->group(function () {
   Route::get('/', [accessController::class, 'departments']) -> name('departments');  

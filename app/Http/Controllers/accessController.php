@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\employee;
 use App\Models\department;
+use App\Models\deptManager;
 
 use Illuminate\Http\Request;
 
@@ -36,17 +37,39 @@ class accessController extends Controller
     }
     
     function employees(){
-      $data = employee::all();
+      $data['body'] = employee::all();
       
       return self::redirect('employees', $data);
     }
     
     function managers(){
-      return self::redirect('managers');
+      $data['body'] = deptManager::all();
+
+      foreach($data['body'] as $d){
+        $d->deptNo = department::where('deptNo', $d->deptNo) -> first() -> deptName;
+        $temp = employee::find($d->empNo);
+        $d->empNo = $temp -> firstName . " " . $temp -> lastName;
+
+        if($d -> toDate == null)
+        $d -> toDate = __('managers.now');
+      }
+        
+      $data['departments'] = [];
+      $data['employees'] = [];
+
+      foreach (employee::all() as $e)
+        array_push( $data['employees'], array( 'value' => $e->id, 'name' => $e -> firstName . " " . $e -> lastName ) );
+
+      foreach (department::all() as $d)
+        array_push( $data['departments'], array( 'value' => $d->deptNo, 'name' => $d->deptName));
+
+      // dd($data);
+
+      return self::redirect('managers', $data);
     }
     
     function departments(){
-      $data = department::all();
+      $data['body'] = department::all();
 
       return self::redirect('departments', $data);
     }
