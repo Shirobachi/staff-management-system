@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\employee;
+use App\Models\department;
 
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class accessController extends Controller
     
     function employees(){
       $data = employee::all();
-
+      
       return self::redirect('employees', $data);
     }
     
@@ -45,7 +46,9 @@ class accessController extends Controller
     }
     
     function departments(){
-      return self::redirect('departments');
+      $data = department::all();
+
+      return self::redirect('departments', $data);
     }
     
     function titles(){

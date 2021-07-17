@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\accessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\DepartmentController;
 
 
 Route::get('/', [accessController::class, 'login']);
@@ -31,6 +32,9 @@ Route::prefix('dashboard/managers')->group(function () {
 });
 Route::prefix('dashboard/departments')->group(function () {
   Route::get('/', [accessController::class, 'departments']) -> name('departments');  
+  Route::post('new', [DepartmentController::class, 'create']);  
+  Route::get('/delete/{id}', [DepartmentController::class, 'destroy']);  
+  Route::post('/edit/{id}', [DepartmentController::class, 'edit']);  
 });
 Route::prefix('dashboard/titles')->group(function () {
   Route::get('/', [accessController::class, 'titles']) -> name('titles');  
