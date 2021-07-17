@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($data as $d)
+    @foreach($data['body'] as $d)
     <tr>
       <td>{{$d->deptNo}}</td>
       <td>{{$d->deptName}}</td>
@@ -38,7 +38,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{__('department.new')}}</h5>
+        <h5 class="modal-title">{{__('departments.new')}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -58,7 +58,7 @@
 </div>
 
 <!-- Modals edit -->
-@foreach($data as $d)
+@foreach($data['body'] as $d)
 <div class="modal fade" id="edit{{$d->deptNo}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
