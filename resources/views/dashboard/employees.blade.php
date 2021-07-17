@@ -8,11 +8,11 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">{{__('employee.birthDate')}}</th>
-        <th scope="col">{{__('employee.firstName')}}</th>
-        <th scope="col">{{__('employee.lastName')}}</th>
-        <th scope="col">{{__('employee.gender')}}</th>
-        <th scope="col">{{__('employee.hireDate')}}</th>
+        <th scope="col">{{__('employees.birthDate')}}</th>
+        <th scope="col">{{__('employees.firstName')}}</th>
+        <th scope="col">{{__('employees.lastName')}}</th>
+        <th scope="col">{{__('employees.gender')}}</th>
+        <th scope="col">{{__('employees.hireDate')}}</th>
         <th scope="col"><i class="bi bi-gear-fill"></i></th>
       </tr>
     </thead>
@@ -23,10 +23,10 @@
         <td>{{$d->birthDate}}</td>
         <td>{{$d->firstName}}</td>
         <td>{{$d->lastName}}</td>
-        <td>{{$d->gender == "M" ? __('employee.male') : __('employee.female')}}</td>
+        <td>{{$d->gender == "M" ? __('employees.male') : __('employees.female')}}</td>
         <td>{{$d->hireDate}}</td>
         <td>
-          <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#editEmployee{{$d->id}}"></i>
+          <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{$d->id}}"></i>
           <a href="{{url()->current()}}/delete/{{$d->id}}">
             <i class="text-danger bi bi-trash"></i>
           </a>
@@ -35,31 +35,31 @@
       @endforeach
       <tr>
         <td style="text-align: center;" colspan="7">
-          <i class="modalLink bi bi-plus-circle-dotted" data-bs-toggle="modal" data-bs-target="#newEmployee"></i>
+          <i class="modalLink bi bi-plus-circle-dotted" data-bs-toggle="modal" data-bs-target="#new"></i>
         </td>
       </tr>
     </tbody>
   </table>
 
   <!-- Modal new -->
-  <div class="modal fade" id="newEmployee" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal fade" id="new" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="newEmployee">{{__('employee.new')}}</h5>
+          <h5 class="modal-title" id="new">{{__('employees.new')}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="add" method="POST" action="{{url()->current()}}/new">
           @csrf
-          <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employee.birthDate')}}">
-          <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employee.firstName')}}">
-          <input class="form-control mb-2" type="text" name="lastName" placeholder="{{__('employee.lastName')}}">
+          <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employees.birthDate')}}">
+          <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}">
+          <input class="form-control mb-2" type="text" name="lastName" placeholder="{{__('employees.lastName')}}">
           <select class="form-control mb-2" name="gender">
-            <option value="M">{{__('employee.male')}}</option>
-            <option value="F">{{__('employee.female')}}</option>
+            <option value="M">{{__('employees.male')}}</option>
+            <option value="F">{{__('employees.female')}}</option>
           </select>
-          <input class="form-control mb-2" type="date" name="hireDate" placeholder="{{__('employee.hireDate')}}">
+          <input class="form-control mb-2" type="date" name="hireDate" placeholder="{{__('employees.hireDate')}}">
         </form>
 
         </div>
@@ -73,24 +73,24 @@
 
   @foreach($data as $d)
   <!-- Modals edit -->
-  <div class="modal fade" id="editEmployee{{$d->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal fade" id="edit{{$d->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="editEmployee{{$d->id}}">{{__('employee.edit')}} {{$d->firstName}} {{$d->lastName}}</h5>
+          <h5 class="modal-title" id="edit{{$d->id}}">{{__('employees.edit')}} {{$d->firstName}} {{$d->lastName}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="add{{$d->id}}" method="POST" action="{{url()->current()}}/edit/{{$d->id}}">
           @csrf
-          <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employee.birthDate')}}" value="{{$d->birthDate}}">
-          <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employee.firstName')}}" value="{{$d->firstName}}">
-          <input class="form-control mb-2" type="text" name="lastName" placeholder="{{__('employee.lastName')}}" value="{{$d->lastName}}">
+          <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employees.birthDate')}}" value="{{$d->birthDate}}">
+          <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}" value="{{$d->firstName}}">
+          <input class="form-control mb-2" type="text" name="lastName" placeholder="{{__('employees.lastName')}}" value="{{$d->lastName}}">
           <select class="form-control mb-2" name="gender">
-            <option {{$d->gender == "M" ? 'selected' : ''}} value="M">{{__('employee.male')}}</option>
-            <option {{$d->gender == "F" ? 'selected' : ''}} value="F">{{__('employee.female')}}</option>
+            <option {{$d->gender == "M" ? 'selected' : ''}} value="M">{{__('employees.male')}}</option>
+            <option {{$d->gender == "F" ? 'selected' : ''}} value="F">{{__('employees.female')}}</option>
           </select>
-          <input class="form-control mb-2" type="date" name="hireDate" placeholder="{{__('employee.hireDate')}}" value="{{$d->hireDate}}">
+          <input class="form-control mb-2" type="date" name="hireDate" placeholder="{{__('employees.hireDate')}}" value="{{$d->hireDate}}">
         </form>
 
         </div>
