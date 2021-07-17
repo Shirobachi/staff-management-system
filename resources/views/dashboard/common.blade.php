@@ -12,7 +12,7 @@
           <button type="button" class="btn {{$path=='managers' ? 'btn-danger' : 'btn-outline-danger'}} form-control mb-2">{{__('common.managers')}}</button>
         </a>
         <a href="{{route('departments')}}">
-          <button type="button" class="btn {{$path=='departments' ? 'btn-dark' : 'btn-outline-dark'}} form-control mb-2">{{__('common.departments')}}</button>
+          <button type="button" class="btn {{$path=='departments' ? 'btn-success' : 'btn-outline-success'}} form-control mb-2">{{__('common.departments')}}</button>
         </a>
         <a href="{{route('titles')}}">
           <button type="button" class="btn {{$path=='titles' ? 'btn-info' : 'btn-outline-info'}} form-control mb-2">{{__('common.titles')}}</button>
