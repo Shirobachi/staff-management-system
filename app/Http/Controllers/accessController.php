@@ -22,9 +22,9 @@ class accessController extends Controller
             return view('auth.register');
     }
 
-    function redirect($path, $view, $data = ''){
+    function redirect($path, $data = []){
       if(session()->has('userID')){
-        return view('dashboard.' . $view, compact('path', 'data'));
+        return view('dashboard.' . $path, compact('path', 'data'));
       }
       else{
         $info['desc'] = __('auth.401');
@@ -37,22 +37,22 @@ class accessController extends Controller
     function employees(){
       $data = employee::all();
 
-      return self::redirect('employees', 'employees', $data);
+      return self::redirect('employees', $data);
     }
     
     function managers(){
-      return self::redirect('managers', 'managers');
+      return self::redirect('managers');
     }
     
     function departments(){
-      return self::redirect('departments', 'departments');
+      return self::redirect('departments');
     }
     
     function titles(){
-      return self::redirect('titles', 'titles');
+      return self::redirect('titles');
     }
     
     function salaries(){
-      return self::redirect('salaries', 'salaries');
+      return self::redirect('salaries');
     }
 }
