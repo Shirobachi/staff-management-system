@@ -46,11 +46,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="new">{{__('employees.new')}}</h5>
+          <h5 class="modal-title">{{__('employees.new')}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="add" method="POST" action="{{url()->current()}}/new">
+          <form id="newForm" method="POST" action="{{url()->current()}}/new">
           @csrf
           <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employees.birthDate')}}">
           <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}">
@@ -65,38 +65,38 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('common.close')}}</button>
-          <button form="add" type="submit" class="btn btn-primary">{{__('common.add')}}</button>
+          <button form="newForm" type="submit" class="btn btn-primary">{{__('common.add')}}</button>
         </div>
       </div>
     </div>
   </div>
 
-  @foreach($data as $d)
   <!-- Modals edit -->
+  @foreach($data as $d)
   <div class="modal fade" id="edit{{$d->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="edit{{$d->id}}">{{__('employees.edit')}} {{$d->firstName}} {{$d->lastName}}</h5>
+          <h5 class="modal-title">{{__('employees.edit')}} {{$d->firstName}} {{$d->lastName}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="add{{$d->id}}" method="POST" action="{{url()->current()}}/edit/{{$d->id}}">
-          @csrf
-          <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employees.birthDate')}}" value="{{$d->birthDate}}">
-          <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}" value="{{$d->firstName}}">
-          <input class="form-control mb-2" type="text" name="lastName" placeholder="{{__('employees.lastName')}}" value="{{$d->lastName}}">
-          <select class="form-control mb-2" name="gender">
-            <option {{$d->gender == "M" ? 'selected' : ''}} value="M">{{__('employees.male')}}</option>
-            <option {{$d->gender == "F" ? 'selected' : ''}} value="F">{{__('employees.female')}}</option>
-          </select>
-          <input class="form-control mb-2" type="date" name="hireDate" placeholder="{{__('employees.hireDate')}}" value="{{$d->hireDate}}">
-        </form>
+          <form id="editForm{{$d->id}}" method="POST" action="{{url()->current()}}/edit/{{$d->id}}">
+            @csrf
+            <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employees.birthDate')}}" value="{{$d->birthDate}}">
+            <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}" value="{{$d->firstName}}">
+            <input class="form-control mb-2" type="text" name="lastName" placeholder="{{__('employees.lastName')}}" value="{{$d->lastName}}">
+            <select class="form-control mb-2" name="gender">
+              <option {{$d->gender == "M" ? 'selected' : ''}} value="M">{{__('employees.male')}}</option>
+              <option {{$d->gender == "F" ? 'selected' : ''}} value="F">{{__('employees.female')}}</option>
+            </select>
+            <input class="form-control mb-2" type="date" name="hireDate" placeholder="{{__('employees.hireDate')}}" value="{{$d->hireDate}}">
+          </form>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('common.close')}}</button>
-          <button form="add{{$d->id}}" type="submit" class="btn btn-primary">{{__('common.edit')}}</button>
+          <button form="editForm{{$d->id}}" type="submit" class="btn btn-primary">{{__('common.edit')}}</button>
         </div>
       </div>
     </div>
