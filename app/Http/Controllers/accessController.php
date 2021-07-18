@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\employee;
 use App\Models\department;
 use App\Models\deptManager;
+use App\Models\title;
 
 use Illuminate\Http\Request;
 
@@ -51,7 +52,7 @@ class accessController extends Controller
         $d->empNo = $temp -> firstName . " " . $temp -> lastName;
 
         if($d -> toDate == null)
-        $d -> toDate = __('managers.now');
+          $d -> toDate = __('managers.now');
       }
         
       $data['departments'] = [];
@@ -63,19 +64,34 @@ class accessController extends Controller
       foreach (department::all() as $d)
         array_push( $data['departments'], array( 'value' => $d->deptNo, 'name' => $d->deptName));
 
-      // dd($data);
-
       return self::redirect('managers', $data);
     }
     
     function departments(){
       $data['body'] = department::all();
-
+      
       return self::redirect('departments', $data);
     }
     
     function titles(){
-      return self::redirect('titles');
+      $data['body'] = title::all();
+
+      $data['employees'] = [];
+
+      foreach ($data['body'] as $value) {
+        $temp = employee::find($value->empNo);
+
+        $value->empNo = $temp->firstName . " " . $temp -> lastName;
+
+        if($value -> toDate == null)
+          $value -> toDate = __('titles.now');
+
+      }
+
+      foreach (employee::all() as $e)
+        array_push( $data['employees'], array( 'value' => $e->id, 'name' => $e -> firstName . " " . $e -> lastName ) );
+
+      return self::redirect('titles', $data);
     }
     
     function salaries(){

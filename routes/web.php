@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\deptManagerController;
+use App\Http\Controllers\TitleController;
 
 
 Route::get('/', [accessController::class, 'login']);
@@ -42,6 +43,9 @@ Route::prefix('dashboard/departments')->group(function () {
 });
 Route::prefix('dashboard/titles')->group(function () {
   Route::get('/', [accessController::class, 'titles']) -> name('titles');  
+  Route::post('new', [TitleController::class, 'create']);  
+  Route::get('/delete/{title}/{date}', [TitleController::class, 'destroy']);  
+  Route::post('/edit/{title}/{date}', [TitleController::class, 'edit']);  
 });
 Route::prefix('dashboard/salaries')->group(function () {
   Route::get('/', [accessController::class, 'salaries']) -> name('salaries');  
