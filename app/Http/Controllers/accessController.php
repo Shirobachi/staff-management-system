@@ -6,6 +6,7 @@ use App\Models\employee;
 use App\Models\department;
 use App\Models\deptManager;
 use App\Models\title;
+use App\Models\salary;
 
 use Illuminate\Http\Request;
 
@@ -94,6 +95,20 @@ class accessController extends Controller
     }
     
     function salaries(){
-      return self::redirect('salaries');
+      $data['body'] = salary::all();
+
+      foreach($data['body'] as $d){
+        $temp = employee::find($d->empNo);
+        $d->empNo = $temp -> firstName . " " . $temp -> lastName;
+        if(! $d->toDate)  
+          $d->toDate = __('salaries.now');
+      }
+
+      $data['employees'] = [];
+
+      foreach (employee::all() as $e)
+        array_push( $data['employees'], array( 'value' => $e->id, 'name' => $e -> firstName . " " . $e -> lastName ) );
+
+      return self::redirect('salaries', $data);
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\deptManagerController;
 use App\Http\Controllers\TitleController;
+use App\Http\Controllers\SalaryController;
 
 
 Route::get('', [accessController::class, 'login']);
@@ -49,4 +50,7 @@ Route::prefix('dashboard/titles')->group(function () {
 });
 Route::prefix('dashboard/salaries')->group(function () {
   Route::get('', [accessController::class, 'salaries']) -> name('salaries');  
+  Route::post('new', [SalaryController::class, 'create']);  
+  Route::get('delete/{date}', [SalaryController::class, 'destroy']);  
+  Route::post('edit/{date}', [SalaryController::class, 'edit']);  
 });
