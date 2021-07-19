@@ -40,7 +40,7 @@ class accessController extends Controller
       }
     }
     
-    function employees(request $r){
+    function employees(request $r = null){
 
       $data['body'] = employee::all();
       
