@@ -55,12 +55,11 @@ class accessController extends Controller
           $d -> toDate = __('managers.now');
       }
         
-      $data['departments'] = [];
       $data['employees'] = [];
-
       foreach (employee::all() as $e)
         array_push( $data['employees'], array( 'value' => $e->id, 'name' => $e -> firstName . " " . $e -> lastName ) );
-
+      
+      $data['departments'] = [];
       foreach (department::all() as $d)
         array_push( $data['departments'], array( 'value' => $d->deptNo, 'name' => $d->deptName));
 
