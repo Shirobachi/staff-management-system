@@ -89,8 +89,8 @@
         <th scope="col">{{__('employees.birthDate')}}</th>
         <th scope="col">{{__('employees.firstName')}}</th>
         <th scope="col">{{__('employees.lastName')}}</th>
-        <!-- <th scope="col">{{__('employees.gender')}}</th> -->
-        <!-- <th scope="col">{{__('employees.hireDate')}}</th> -->
+        <th scope="col">{{__('employees.gender')}}</th>
+        <th scope="col">{{__('employees.hireDate')}}</th>
         <th scope="col">{{__('employees.dept')}}</th>
         <th scope="col">{{__('employees.title')}}</th>
         <th scope="col">{{__('employees.salary')}}</th>
@@ -104,8 +104,8 @@
         <td>{{$d->birthDate}}</td>
         <td>{{$d->firstName}}</td>
         <td>{{$d->lastName}}</td>
-        <!-- <td>{{$d->gender == "M" ? __('employees.male') : __('employees.female')}}</td> -->
-        <!-- <td>{{$d->hireDate}}</td> -->
+        <td>{{$d->gender == "M" ? __('employees.male') : __('employees.female')}}</td>
+        <td>{{$d->hireDate}}</td>
         <td>{{$d->dept}}</td>
         <td>{{$d->title}}</td>
         <td>{{$d->salary}}</td>
@@ -118,7 +118,7 @@
       </tr>
       @endforeach
       <tr>
-        <td style="text-align: center;" colspan="8">
+        <td style="text-align: center;" colspan="10">
           <i class="modalLink bi bi-plus-circle-dotted" data-bs-toggle="modal" data-bs-target="#new"></i>
         </td>
       </tr>
