@@ -48,7 +48,7 @@
       <div class="modal-body">
         <form id="newForm" method="POST" action="{{url()->current()}}/new">
         @csrf
-        <select class="form-control mb-2" name="empNo">
+        <select class="form-select mb-2" name="empNo">
           @foreach($data['employees'] as $d)
             <option value="{{$d['value']}}">{{$d['name']}}</option>
           @endforeach
@@ -79,7 +79,7 @@
       <div class="modal-body">
         <form id="editForm{{str_replace(' ', '', $d->empNo)}}" method="POST" action="{{url()->current()}}/edit/{{$d->title}}/{{$d->fromDate}}">
         @csrf
-        <select class="form-control mb-2" name="empNo">
+        <select class="form-select mb-2" name="empNo">
           @foreach($data['employees'] as $e)
             <option {{$d->empNo == $e['name'] ? 'selected' : ''}} value="{{$e['value']}}">{{$e['name']}}</option>
           @endforeach

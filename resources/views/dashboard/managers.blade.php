@@ -51,12 +51,12 @@
         <form id="newForm" method="POST" action="{{url()->current()}}/new">
         @csrf
 
-        <select class="form-control mb-2" name="deptNo">
+        <select class="form-select mb-2" name="deptNo">
           @foreach($data['departments'] as $d)
             <option value="{{$d['value']}}">{{$d['name']}}</option>
           @endforeach
         </select>
-        <select class="form-control mb-2" name="empNo">
+        <select class="form-select mb-2" name="empNo">
           @foreach($data['employees'] as $e)
             <option value="{{$e['value']}}">{{$e['name']}}</option>
           @endforeach
@@ -87,12 +87,12 @@
         <form id="editForm{{$d->id}}" method="POST" action="{{url()->current()}}/edit/{{$d->id}}">
           @csrf
 
-        <select class="form-control mb-2" name="deptNo">
+        <select class="form-select mb-2" name="deptNo">
           @foreach($data['departments'] as $e)
             <option {{$d->deptNo == $e['name'] ? 'selected' : '' }} value="{{$e['value']}}">{{$e['name']}}</option>
           @endforeach
         </select>
-        <select class="form-control mb-2" name="empNo">
+        <select class="form-select mb-2" name="empNo">
           @foreach($data['employees'] as $e)
             <option {{$d->empNo == $e['name'] ? 'selected' : '' }} value="{{$e['value']}}">{{$e['name']}}</option>
           @endforeach

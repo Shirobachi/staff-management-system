@@ -61,7 +61,7 @@
           <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employees.birthDate')}}">
           <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}">
           <input class="form-control mb-2" type="text" name="lastName" placeholder="{{__('employees.lastName')}}">
-          <select class="form-control mb-2" name="gender">
+          <select class="form-select mb-2" name="gender">
             <option value="M">{{__('employees.male')}}</option>
             <option value="F">{{__('employees.female')}}</option>
           </select>
@@ -92,7 +92,7 @@
             <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employees.birthDate')}}" value="{{$d->birthDate}}">
             <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}" value="{{$d->firstName}}">
             <input class="form-control mb-2" type="text" name="lastName" placeholder="{{__('employees.lastName')}}" value="{{$d->lastName}}">
-            <select class="form-control mb-2" name="gender">
+            <select class="form-select mb-2" name="gender">
               <option {{$d->gender == "M" ? 'selected' : ''}} value="M">{{__('employees.male')}}</option>
               <option {{$d->gender == "F" ? 'selected' : ''}} value="F">{{__('employees.female')}}</option>
             </select>
