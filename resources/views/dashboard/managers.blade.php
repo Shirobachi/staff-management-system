@@ -4,7 +4,7 @@
 
 @section('table')
 
-<table class="table table-success table-striped table-hover table-danger">
+<table class="table table-success table-striped table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
