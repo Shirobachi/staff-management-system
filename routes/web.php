@@ -10,13 +10,13 @@ use App\Http\Controllers\deptManagerController;
 use App\Http\Controllers\TitleController;
 
 
-Route::get('/', [accessController::class, 'login']);
+Route::get('', [accessController::class, 'login']);
 Route::get('register', [accessController::class, 'register']);
 
-Route::post('/', [UserController::class, 'index']);
+Route::post('', [UserController::class, 'index']);
 Route::post('register', [UserController::class, 'create']);
 
-Route::get('/logout', function () {
+Route::get('logout', function () {
   session()->forget('userID');
   $info['desc'] = __('auth.logOutOk');
   return view('auth.login', compact('info'));
@@ -24,29 +24,29 @@ Route::get('/logout', function () {
 
 
 Route::prefix('dashboard/employees')->group(function () {
-  Route::get('/', [accessController::class, 'employees']) -> name('employees');  
+  Route::get('', [accessController::class, 'employees']) -> name('employees');  
   Route::post('new', [EmployeeController::class, 'create']);  
-  Route::get('/delete/{id}', [EmployeeController::class, 'destroy']);  
-  Route::post('/edit/{id}', [EmployeeController::class, 'edit']);  
+  Route::get('delete/{id}', [EmployeeController::class, 'destroy']);  
+  Route::post('edit/{id}', [EmployeeController::class, 'edit']);  
 });
 Route::prefix('dashboard/managers')->group(function () {
-  Route::get('/', [accessController::class, 'managers']) -> name('managers');  
+  Route::get('', [accessController::class, 'managers']) -> name('managers');  
   Route::post('new', [deptManagerController::class, 'create']);  
-  Route::get('/delete/{id}', [deptManagerController::class, 'destroy']);  
-  Route::post('/edit/{id}', [deptManagerController::class, 'edit']);  
+  Route::get('delete/{id}', [deptManagerController::class, 'destroy']);  
+  Route::post('edit/{id}', [deptManagerController::class, 'edit']);  
 });
 Route::prefix('dashboard/departments')->group(function () {
-  Route::get('/', [accessController::class, 'departments']) -> name('departments');  
+  Route::get('', [accessController::class, 'departments']) -> name('departments');  
   Route::post('new', [DepartmentController::class, 'create']);  
-  Route::get('/delete/{id}', [DepartmentController::class, 'destroy']);  
-  Route::post('/edit/{id}', [DepartmentController::class, 'edit']);  
+  Route::get('delete/{id}', [DepartmentController::class, 'destroy']);  
+  Route::post('edit/{id}', [DepartmentController::class, 'edit']);  
 });
 Route::prefix('dashboard/titles')->group(function () {
-  Route::get('/', [accessController::class, 'titles']) -> name('titles');  
+  Route::get('', [accessController::class, 'titles']) -> name('titles');  
   Route::post('new', [TitleController::class, 'create']);  
-  Route::get('/delete/{title}/{date}', [TitleController::class, 'destroy']);  
-  Route::post('/edit/{title}/{date}', [TitleController::class, 'edit']);  
+  Route::get('delete/{title}/{date}', [TitleController::class, 'destroy']);  
+  Route::post('edit/{title}/{date}', [TitleController::class, 'edit']);  
 });
 Route::prefix('dashboard/salaries')->group(function () {
-  Route::get('/', [accessController::class, 'salaries']) -> name('salaries');  
+  Route::get('', [accessController::class, 'salaries']) -> name('salaries');  
 });
