@@ -27,6 +27,7 @@ Route::get('logout', function () {
 
 Route::prefix('dashboard/employees')->group(function () {
   Route::get('', [accessController::class, 'employees']) -> name('employees');  
+  Route::post('', [accessController::class, 'employees']);  
   Route::post('new', [EmployeeController::class, 'create']);  
   Route::get('delete/{id}', [EmployeeController::class, 'destroy']);  
   Route::post('edit/{id}', [EmployeeController::class, 'edit']);  
