@@ -10,6 +10,7 @@ use App\Models\salary;
 use App\Models\deptEmp;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class accessController extends Controller
 {
@@ -39,16 +40,29 @@ class accessController extends Controller
       }
     }
     
+    function employees(request $r){
+
     function employees(){
       $data['body'] = employee::all();
       
+      
+      $temp = DB::table('employees');
+      // gender filter
+      if(isset($r->male) != isset($r->female)){
+        $filter = isset($r->female) ? $r->female : $r -> male;
+        $temp = $temp -> where('gender', $filter);
+      }
+        
+
+      $data['body'] = $temp -> get();
+
       foreach ($data['body'] as $value) {
         // get employee's department
         $temp = deptEmp::where('empNo', $value->id) -> orderBy('fromDate', 'desc') -> first();
         if($temp)
-        $value->dept = department::find($temp -> deptNo)->deptName;
+          $value->dept = department::find($temp -> deptNo)->deptName;
         else
-        $value->dept = __('employees.noDept');
+          $value->dept = __('employees.noDept');
 
         // get employee's title
         $temp = title::where('empNo', $value->id) -> orderBy('fromDate', 'desc') -> first();
@@ -63,8 +77,12 @@ class accessController extends Controller
           $value->salary = $temp->salary;
         else
           $value->salary = __('employees.noSalary');
-
       }
+
+      $data['departments'] = [];
+      foreach (department::all() as $d)
+        array_push( $data['departments'], array( 'value' => $d->deptNo, 'name' => $d->deptName));
+
 
       return self::redirect('employees', $data);
     }
