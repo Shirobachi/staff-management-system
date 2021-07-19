@@ -42,6 +42,30 @@ class accessController extends Controller
     function employees(){
       $data['body'] = employee::all();
       
+      foreach ($data['body'] as $value) {
+        // get employee's department
+        $temp = deptEmp::where('empNo', $value->id) -> orderBy('fromDate', 'desc') -> first();
+        if($temp)
+        $value->dept = department::find($temp -> deptNo)->deptName;
+        else
+        $value->dept = __('employees.noDept');
+
+        // get employee's title
+        $temp = title::where('empNo', $value->id) -> orderBy('fromDate', 'desc') -> first();
+        if($temp)
+          $value->title = $temp->title;
+        else
+          $value->title = __('employees.noTitle');
+
+        // get employee's salary
+        $temp = salary::where('empNo', $value->id) -> orderBy('fromDate', 'desc') -> first();
+        if($temp)
+          $value->salary = $temp->salary;
+        else
+          $value->salary = __('employees.noSalary');
+
+      }
+
       return self::redirect('employees', $data);
     }
     

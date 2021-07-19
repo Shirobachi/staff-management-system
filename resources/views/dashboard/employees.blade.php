@@ -11,8 +11,11 @@
         <th scope="col">{{__('employees.birthDate')}}</th>
         <th scope="col">{{__('employees.firstName')}}</th>
         <th scope="col">{{__('employees.lastName')}}</th>
-        <th scope="col">{{__('employees.gender')}}</th>
-        <th scope="col">{{__('employees.hireDate')}}</th>
+        <!-- <th scope="col">{{__('employees.gender')}}</th> -->
+        <!-- <th scope="col">{{__('employees.hireDate')}}</th> -->
+        <th scope="col">{{__('employees.dept')}}</th>
+        <th scope="col">{{__('employees.title')}}</th>
+        <th scope="col">{{__('employees.salary')}}</th>
         <th scope="col"><i class="bi bi-gear-fill"></i></th>
       </tr>
     </thead>
@@ -23,8 +26,11 @@
         <td>{{$d->birthDate}}</td>
         <td>{{$d->firstName}}</td>
         <td>{{$d->lastName}}</td>
-        <td>{{$d->gender == "M" ? __('employees.male') : __('employees.female')}}</td>
-        <td>{{$d->hireDate}}</td>
+        <!-- <td>{{$d->gender == "M" ? __('employees.male') : __('employees.female')}}</td> -->
+        <!-- <td>{{$d->hireDate}}</td> -->
+        <td>{{$d->dept}}</td>
+        <td>{{$d->title}}</td>
+        <td>{{$d->salary}}</td>
         <td>
           <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{$d->id}}"></i>
           <a href="{{url()->current()}}/delete/{{$d->id}}">
@@ -34,7 +40,7 @@
       </tr>
       @endforeach
       <tr>
-        <td style="text-align: center;" colspan="7">
+        <td style="text-align: center;" colspan="8">
           <i class="modalLink bi bi-plus-circle-dotted" data-bs-toggle="modal" data-bs-target="#new"></i>
         </td>
       </tr>

@@ -10,5 +10,9 @@ return [
   'hireDate' => 'Hire date',
   'male' => 'Male',
   'female' => 'Female',
+  'noDept' => 'No department assigned',
+  'dept' => 'Department',
+  'noTitle' => 'No title set',
+  'noSalary' => 'No salary set',
   '' => '',
 ];
