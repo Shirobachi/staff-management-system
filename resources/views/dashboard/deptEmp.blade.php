@@ -88,7 +88,7 @@
 
         <select class="form-select mb-2" name="deptNo">
           @foreach($data['departments'] as $e)
-            <option {{$d->deptNo == $e['name'] ? 'selected' : '' }} value="{{$e['value']}}">{{$e['name']}}</option>
+            <option {{$e->deptNo == $e['name'] ? 'selected' : '' }} value="{{$e['value']}}">{{$e['name']}}</option>
           @endforeach
         </select>
         <select class="form-select mb-2" name="empNo">
