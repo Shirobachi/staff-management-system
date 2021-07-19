@@ -20,6 +20,9 @@
         <a href="{{route('salaries')}}">
           <button type="button" class="btn {{$path=='salaries' ? 'btn-info' : 'btn-outline-info'}} form-control mb-2">{{__('common.salaries')}}</button>
         </a>
+        <a href="{{route('dept-emp')}}">
+          <button type="button" class="btn {{$path=='dept-emp' ? 'btn-success' : 'btn-outline-success'}} form-control mb-2">{{__('common.dept-emp')}}</button>
+        </a>
       </div>
       <div class="col-12 col-md-9">
         @yield('table')

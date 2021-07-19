@@ -7,6 +7,7 @@ use App\Models\department;
 use App\Models\deptManager;
 use App\Models\title;
 use App\Models\salary;
+use App\Models\deptEmp;
 
 use Illuminate\Http\Request;
 
@@ -109,6 +110,29 @@ class accessController extends Controller
       foreach (employee::all() as $e)
         array_push( $data['employees'], array( 'value' => $e->id, 'name' => $e -> firstName . " " . $e -> lastName ) );
 
-      return self::redirect('salaries', $data);
+        return self::redirect('salaries', $data);
+      }
+      
+      function deptEmp(){
+      $data['body'] = deptEmp::all();
+      
+      $data['employees'] = [];
+      foreach (employee::all() as $e)
+        array_push( $data['employees'], array( 'value' => $e->id, 'name' => $e -> firstName . " " . $e -> lastName ) );
+      
+      $data['departments'] = [];
+      foreach (department::all() as $d)
+        array_push( $data['departments'], array( 'value' => $d->deptNo, 'name' => $d->deptName));
+        
+      foreach($data['body'] as $d){
+        $d->deptNo = department::where('deptNo', $d->deptNo) -> first() -> deptName;
+        $temp = employee::find($d->empNo);
+        $d->empNo = $temp -> firstName . " " . $temp -> lastName;
+
+        if($d -> toDate == null)
+          $d -> toDate = __('deptEmp.now');
+      }
+  
+      return self::redirect('deptEmp', $data);
     }
 }

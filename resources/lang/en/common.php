@@ -11,5 +11,6 @@ return [
   'titles' => 'Titles',
   'salaries' => 'Salaries',
   'edit' => 'Edit',
+  'dept-emp' => 'Employees\' department(s)',
   '' => '',
 ];
