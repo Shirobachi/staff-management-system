@@ -4,6 +4,84 @@
 
 @section('table')
 
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button collapsed" aria-expanded="true" type="button" data-bs-toggle="collapse" data-bs-target="#filter">
+      Filters
+    </button>
+  </h2>
+  <div id="filter" class="accordion-collapse collapse">
+    <div class="accordion-body">
+
+      <form method="POST">
+        @csrf
+        <!-- Type of employee -->
+        <fieldset class="row mb-3">
+          <legend class="col-form-label col-sm-3 pt-0">{{__('employees.employeeType')}}:</legend>
+          <div class="col-sm-9">
+            
+          <div class="form-check form-switch">
+            <label class="d-block">
+              <input class="form-check-input" type="checkbox" name="currentEmployee" checked>
+              {{__('employees.currentEmployee')}}
+            </label>
+            <label class="d-block">
+              <input class="form-check-input" type="checkbox" name="pastEmployee" checked>
+              {{__('employees.pastEmployee')}}
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Gender of employee -->
+        <fieldset class="row mb-3">
+          <legend class="col-form-label col-sm-3 pt-0">{{__('employees.gender')}}:</legend>
+          <div class="col-sm-9">
+            
+          <div class="form-check form-switch">
+            <label class="d-block">
+              <input class="form-check-input" type="checkbox" name="male" value="M" checked>
+              {{__('employees.male')}}
+            </label>
+            <label class="d-block">
+              <input class="form-check-input" type="checkbox" name="female" value="F" checked>
+              {{__('employees.female')}}
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Employee's salary -->
+        <fieldset class="row mb-3">
+          <legend class="col-form-label col-sm-3 pt-0">{{__('employees.salary')}}:</legend>
+          <div class="col-sm-9">
+            
+          <div class="input-group">
+            <input class="form-control d-flex" type="number" min="1" name="salaRyMin" placeholder="{{__('employees.salaryMin')}}">
+            <span class="input-group-text"> - </span>
+            <input class="form-control d-flex" type="number" min="1" name="salaRyMax" placeholder="{{__('employees.salaryMax')}}">
+          </div>
+
+        </fieldset>
+
+        <!-- Employee's dept -->
+        <fieldset class="row mb-3">
+          <legend class="col-form-label col-sm-3 pt-0">{{__('employees.dept')}}:</legend>
+          <div class="col-sm-9">
+            
+          <select class="form-select mb-2" name="deptNo">
+            @foreach($data['departments'] as $e)
+              <option value="{{$e['value']}}">{{$e['name']}}</option>
+            @endforeach
+          </select>
+
+        </fieldset>
+
+        <button type="submit" class="btn btn-success mb-2 form-control">{{__('employees.search')}}</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
   <table class="table table-primary table-striped table-hover">
     <thead>
       <tr>

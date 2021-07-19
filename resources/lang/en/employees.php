@@ -14,5 +14,12 @@ return [
   'dept' => 'Department',
   'noTitle' => 'No title set',
   'noSalary' => 'No salary set',
+  'search' => 'Filter!',
+  'employeeType' => 'Type of employee',
+  'currentEmployee' => 'Current employee',
+  'pastEmployee' => 'Past employee',
+  'salary' => 'Salary',
+  'salaryMin' => 'Minimum salary',
+  'salaryMax' => 'Maximum salary',
   '' => '',
 ];
