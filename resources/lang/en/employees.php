@@ -11,6 +11,7 @@ return [
   'male' => 'Male',
   'female' => 'Female',
   'noDept' => 'No department assigned',
+  'noFilterByDept' => 'Any department',
   'dept' => 'Department',
   'noTitle' => 'No title set',
   'noSalary' => 'No salary set',
@@ -21,5 +22,6 @@ return [
   'salary' => 'Salary',
   'salaryMin' => 'Minimum salary',
   'salaryMax' => 'Maximum salary',
+  'title' => 'Title',
   '' => '',
 ];

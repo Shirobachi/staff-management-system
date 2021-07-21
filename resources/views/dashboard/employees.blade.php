@@ -68,6 +68,7 @@
           <div class="col-sm-9">
             
           <select class="form-select mb-2" name="deptNo">
+            <option value="NULL">{{__('employees.noFilterByDept')}}</option>
             @foreach($data['departments'] as $e)
               <option value="{{$e['value']}}">{{$e['name']}}</option>
             @endforeach
