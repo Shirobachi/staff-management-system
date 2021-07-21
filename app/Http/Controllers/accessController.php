@@ -40,28 +40,23 @@ class accessController extends Controller
       }
     }
     
-    function employees(request $r = null){
+    function employees(request $r){
 
       $data['body'] = employee::all();
-      
-      
-      $temp = DB::table('employees');
-      // gender filter
-      if(isset($r->male) != isset($r->female)){
-        $filter = isset($r->female) ? $r->female : $r -> male;
-        $temp = $temp -> where('gender', $filter);
-      }
-        
 
-      $data['body'] = $temp -> get();
+      dump($r->all() ?? '');
 
       foreach ($data['body'] as $value) {
         // get employee's department
         $temp = deptEmp::where('empNo', $value->id) -> orderBy('fromDate', 'desc') -> first();
-        if($temp)
+        if($temp){
           $value->dept = department::find($temp -> deptNo)->deptName;
-        else
+          $value->deptNo = $temp->deptNo;
+        }
+        else{
           $value->dept = __('employees.noDept');
+          $value->deptNo = null;
+        }
 
         // get employee's title
         $temp = title::where('empNo', $value->id) -> orderBy('fromDate', 'desc') -> first();
@@ -72,16 +67,39 @@ class accessController extends Controller
 
         // get employee's salary
         $temp = salary::where('empNo', $value->id) -> orderBy('fromDate', 'desc') -> first();
-        if($temp)
+        if($temp){
           $value->salary = $temp->salary;
-        else
+          $value->typeEmp = ! $temp -> toDate ? 'C' : 'P';
+        }
+        else{
           $value->salary = __('employees.noSalary');
+          $value->typeEmp = 'P';
+        }
+      }
+
+      // Filtering
+      foreach ($data['body'] as $key => $value) {
+        // Employee's type
+        if(isset($r->pastEmployee) != isset($r->currentEmployee)){
+          $tmp = isset($r->currentEmployee) ? 'C' : 'P';
+
+          if($value -> typeEmp != $tmp)
+            unset($data['body'][$key]);
+        }
+
+        // Employee's gender
+        if(isset($r->male) != isset($r->female)){
+          $tmp = isset($r->male) ? $r->male : $r->female;
+
+          // dump($tmp, $value->gender);
+          if($value->gender != $tmp)
+            unset($data['body'][$key]);
+          }
       }
 
       $data['departments'] = [];
       foreach (department::all() as $d)
         array_push( $data['departments'], array( 'value' => $d->deptNo, 'name' => $d->deptName));
-
 
       return self::redirect('employees', $data);
     }
