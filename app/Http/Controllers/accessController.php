@@ -44,7 +44,7 @@ class accessController extends Controller
 
       $data['body'] = employee::all();
 
-      dump($r->all() ?? '');
+      // dump($r->all() ?? '');
 
       foreach ($data['body'] as $value) {
         // get employee's department
