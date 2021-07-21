@@ -55,9 +55,9 @@
           <div class="col-sm-9">
             
           <div class="input-group">
-            <input class="form-control d-flex" type="number" min="1" name="salaRyMin" placeholder="{{__('employees.salaryMin')}}">
+            <input class="form-control d-flex" type="number" min="1" name="salaryMin" placeholder="{{__('employees.salaryMin')}}">
             <span class="input-group-text"> - </span>
-            <input class="form-control d-flex" type="number" min="1" name="salaRyMax" placeholder="{{__('employees.salaryMax')}}">
+            <input class="form-control d-flex" type="number" min="1" name="salaryMax" placeholder="{{__('employees.salaryMax')}}">
           </div>
 
         </fieldset>
