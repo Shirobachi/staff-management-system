@@ -44,8 +44,6 @@ class accessController extends Controller
 
       $data['body'] = employee::all();
 
-      // dump($r->all() ?? '');
-
       foreach ($data['body'] as $value) {
         // get employee's department
         $temp = deptEmp::where('empNo', $value->id) -> orderBy('fromDate', 'desc') -> first();
@@ -95,6 +93,12 @@ class accessController extends Controller
           if($value->gender != $tmp)
             unset($data['body'][$key]);
           }
+          
+          //salary
+          if((isset($r->salaryMin) && isset($r->salaryMax) && $value->salary > $r->salaryMax || $value->salary < $r->salaryMin) || 
+              (isset($r->salaryMin) && !isset($r->salaryMax) && $value->salary < $r->salaryMin) ||
+              (!isset($r->salaryMin) && isset($r->salaryMax) && $value->salary > $r->salaryMax))
+            unset($data['body'][$key]);
       }
 
       $data['departments'] = [];
