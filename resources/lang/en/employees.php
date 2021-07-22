@@ -23,5 +23,7 @@ return [
   'salaryMin' => 'Minimum salary',
   'salaryMax' => 'Maximum salary',
   'title' => 'Title',
-  '' => '',
+  'at' => 'at', //manage AT department of mysteries
+  'empOf' => 'employee of', // Harry Potter EMPLOYEE OF department of mysteries
+  'noSalaries' => 'No salaries for that person!', // on export PDF if no salaries for specified person
 ];
