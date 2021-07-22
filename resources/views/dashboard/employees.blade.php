@@ -147,14 +147,14 @@
         <div class="modal-body">
           <form id="newForm" method="POST" action="{{url()->current()}}/new">
           @csrf
-          <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employees.birthDate')}}">
+          <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('employees.birthDate')}}" name="birthDate" placeholder="{{__('employees.birthDate')}}">
           <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}">
           <input class="form-control mb-2" type="text" name="lastName" placeholder="{{__('employees.lastName')}}">
           <select class="form-select mb-2" name="gender">
             <option value="M">{{__('employees.male')}}</option>
             <option value="F">{{__('employees.female')}}</option>
           </select>
-          <input class="form-control mb-2" type="date" name="hireDate" placeholder="{{__('employees.hireDate')}}">
+          <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('employees.hireDate')}}" name="hireDate" placeholder="{{__('employees.hireDate')}}">
         </form>
 
         </div>
@@ -178,14 +178,14 @@
         <div class="modal-body">
           <form id="editForm{{$d->id}}" method="POST" action="{{url()->current()}}/edit/{{$d->id}}">
             @csrf
-            <input class="form-control mb-2" type="date" name="birthDate" placeholder="{{__('employees.birthDate')}}" value="{{$d->birthDate}}">
+            <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('employees.birthDate')}}" name="birthDate" placeholder="{{__('employees.birthDate')}}" value="{{$d->birthDate}}">
             <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}" value="{{$d->firstName}}">
             <input class="form-control mb-2" type="text" name="lastName" placeholder="{{__('employees.lastName')}}" value="{{$d->lastName}}">
             <select class="form-select mb-2" name="gender">
               <option {{$d->gender == "M" ? 'selected' : ''}} value="M">{{__('employees.male')}}</option>
               <option {{$d->gender == "F" ? 'selected' : ''}} value="F">{{__('employees.female')}}</option>
             </select>
-            <input class="form-control mb-2" type="date" name="hireDate" placeholder="{{__('employees.hireDate')}}" value="{{$d->hireDate}}">
+            <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('employees.hireDate')}}" name="hireDate" placeholder="{{__('employees.hireDate')}}" value="{{$d->hireDate}}">
           </form>
 
         </div>

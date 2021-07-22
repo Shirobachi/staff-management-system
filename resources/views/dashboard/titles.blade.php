@@ -58,8 +58,8 @@
           @endforeach
         </select>
         <input class="form-control mb-2" type="text" name="title" placeholder="{{__('titles.title')}}" >
-        <input class="form-control mb-2" type="date" name="fromDate" placeholder="{{__('titles.fromDate')}}" >
-        <input class="form-control mb-2" type="date" name="toDate" placeholder="{{__('titles.toDate')}}" >
+        <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('titles.fromDate')}}" name="fromDate" placeholder="{{__('titles.fromDate')}}" >
+        <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('titles.toDate')}}" name="toDate" placeholder="{{__('titles.toDate')}}" >
       </form>
 
       </div>
@@ -89,8 +89,8 @@
           @endforeach
         </select>
         <input class="form-control mb-2" type="text" name="title" placeholder="{{__('titles.title')}}" value="{{$d->title}}" >
-        <input class="form-control mb-2" type="date" name="fromDate" placeholder="{{__('titles.fromDate')}}" value="{{$d->fromDate}}" >
-        <input class="form-control mb-2" type="date" name="toDate" placeholder="{{__('titles.toDate')}}" value="{{$d->toDate}}" >
+        <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('titles.fromDate')}}" name="fromDate" placeholder="{{__('titles.fromDate')}}" value="{{$d->fromDate}}" >
+        <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('titles.toDate')}}" name="toDate" placeholder="{{__('titles.toDate')}}" value="{{$d->toDate}}" >
       </form>
 
       </div>

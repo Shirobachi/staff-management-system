@@ -65,8 +65,8 @@
             <option value="{{$e['value']}}">{{$e['name']}}</option>
           @endforeach
         </select>
-        <input class="form-control mb-2" type="date" name="fromDate" placeholder="{{__('managers.fromDate')}}">
-        <input class="form-control mb-2" type="date" name="toDate" placeholder="{{__('managers.toDate')}}">
+        <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('managers.fromDate')}}" name="fromDate" placeholder="{{__('managers.fromDate')}}">
+        <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('managers.toDate')}}" name="toDate" placeholder="{{__('managers.toDate')}}">
       </form>
 
       </div>
@@ -101,8 +101,8 @@
             <option {{$d->empNo == $e['name'] ? 'selected' : '' }} value="{{$e['value']}}">{{$e['name']}}</option>
           @endforeach
         </select>
-        <input value="{{$d->fromDate}}" class="form-control mb-2" type="date" name="fromDate" placeholder="{{__('managers.fromDate')}}">
-        <input {{$d->toDate != __('managers.now') ? "value=" . $d->toDate : ""}} class="form-control mb-2" type="date" name="toDate" placeholder="{{__('managers.toDate')}}">
+        <input value="{{$d->fromDate}}" class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('managers.fromDate')}}" name="fromDate" placeholder="{{__('managers.fromDate')}}">
+        <input {{$d->toDate != __('managers.now') ? "value=" . $d->toDate : ""}} class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('managers.toDate')}}" name="toDate" placeholder="{{__('managers.toDate')}}">
       </form>
 
       </div>

@@ -58,8 +58,8 @@
           @endforeach
         </select>
         <input class="form-control mb-2" type="number" min="1" name="salary" placeholder="{{__('salaries.salary')}}" >
-        <input class="form-control mb-2" type="date" name="fromDate" placeholder="{{__('salaries.fromDate')}}" >
-        <input class="form-control mb-2" type="date" name="toDate" placeholder="{{__('salaries.toDate')}}" >
+        <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('salaries.fromDate')}}" name="fromDate" placeholder="{{__('salaries.fromDate')}}" >
+        <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('salaries.toDate')}}" name="toDate" placeholder="{{__('salaries.toDate')}}" >
       </form>
 
       </div>
@@ -89,8 +89,8 @@
           @endforeach
         </select>
         <input class="form-control mb-2" type="number" min="1" name="salary" placeholder="{{__('salaries.salary')}}" value="{{$d->salary}}">
-        <input class="form-control mb-2" type="date" name="fromDate" placeholder="{{__('salaries.fromDate')}}" value="{{$d->fromDate}}">
-        <input class="form-control mb-2" type="date" name="toDate" placeholder="{{__('salaries.toDate')}}" value="{{$d->toDate}}">
+        <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('salaries.fromDate')}}" name="fromDate" placeholder="{{__('salaries.fromDate')}}" value="{{$d->fromDate}}">
+        <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('salaries.toDate')}}" name="toDate" placeholder="{{__('salaries.toDate')}}" value="{{$d->toDate}}">
       </form>
 
       </div>
