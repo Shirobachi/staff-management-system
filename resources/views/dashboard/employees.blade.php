@@ -116,10 +116,10 @@
             <i class="text-danger bi bi-trash"></i>
           </a>
           <a class="iconNoDecoration" href="{{url()->current()}}/show/{{$d->id}}">
-            <i class="text-success bi bi-eye"></i>
+            <i class="text-success bi bi-eye" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.show')}}"></i>
           </a>
           <a class="iconNoDecoration" href="{{url()->current()}}/download/{{$d->id}}">
-            <i class="text-secondary bi bi-file-earmark-arrow-down"></i>
+            <i class="text-secondary bi bi-file-earmark-arrow-down" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.download')}}"></i>
           </a>
         </td>
       </tr>
