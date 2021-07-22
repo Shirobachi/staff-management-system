@@ -112,8 +112,14 @@
         <td>{{$d->salary}}</td>
         <td>
           <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{$d->id}}"></i>
-          <a href="{{url()->current()}}/delete/{{$d->id}}">
+          <a class="iconNoDecoration" href="{{url()->current()}}/delete/{{$d->id}}">
             <i class="text-danger bi bi-trash"></i>
+          </a>
+          <a class="iconNoDecoration" href="{{url()->current()}}/show/{{$d->id}}">
+            <i class="text-success bi bi-eye"></i>
+          </a>
+          <a class="iconNoDecoration" href="{{url()->current()}}/download/{{$d->id}}">
+            <i class="text-secondary bi bi-file-earmark-arrow-down"></i>
           </a>
         </td>
       </tr>
