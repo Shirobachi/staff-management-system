@@ -12,7 +12,9 @@ Application to managing of your own staff ;)
 ```
 git clone https://gitlab.ideo.pl/s.hryszko/staff-manager.git && 
 cd "staff-manager"
+sudo apt install php-gd
 composer i || composer install --ignore-platform-reqs || composer install --ignore-platform-reqs && 
+chmod 775 vendor/mpdf/mpdf/tmp && chmod 777 vendor/mpdf/mpdf/tmp/mpdf
 if [ ! -f .env ]; then cp .env.example .env; fi
 echo "Edit mysql access!" && read && $EDITOR .env
 ```
