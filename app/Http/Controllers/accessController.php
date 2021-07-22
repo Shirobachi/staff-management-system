@@ -40,8 +40,7 @@ class accessController extends Controller
       }
     }
     
-    function employees(request $r){
-
+    function _employees(){
       $data['body'] = employee::all();
 
       foreach ($data['body'] as $value) {
@@ -75,6 +74,22 @@ class accessController extends Controller
         }
       }
 
+      $data['departments'] = [];
+      foreach (department::all() as $d)
+        array_push( $data['departments'], array( 'value' => $d->deptNo, 'name' => $d->deptName));
+      
+      return $data;
+    }
+
+    function employees(){
+      $data = self::_employees();
+      
+      return self::redirect('employees', $data);
+    }
+    
+    function employeesFilter(request $r){
+      $data = self::_employees();
+
       // Filtering
       foreach ($data['body'] as $key => $value) {
         // Employee's type
@@ -104,10 +119,6 @@ class accessController extends Controller
         if(isset($r->deptNo) && $r->deptNo != "NULL" && $value->deptNo != $r->deptNo)
           unset($data['body'][$key]);
       }
-
-      $data['departments'] = [];
-      foreach (department::all() as $d)
-        array_push( $data['departments'], array( 'value' => $d->deptNo, 'name' => $d->deptName));
 
       return self::redirect('employees', $data);
     }
