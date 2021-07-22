@@ -1,5 +1,14 @@
 .logOutButton {
   position: fixed;
   left: 35px;
-  top: 35px;
+  bottom: 35px;
+}
+
+.modalLink{
+  cursor: pointer;
+  color: blue;
+}
+
+.iconNoDecoration{
+  text-decoration: none!important;
 }
