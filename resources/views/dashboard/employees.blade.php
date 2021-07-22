@@ -114,13 +114,13 @@
           <span data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.edit')}}">
             <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{$d->id}}"></i>
           </span>
-          <a class="iconNoDecoration" href="{{url()->current()}}/delete/{{$d->id}}">
+          <a class="iconNoDecoration" href="{{route('employees')}}/delete/{{$d->id}}">
             <i class="text-danger bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.delete')}}"></i>
           </a>
-          <a class="iconNoDecoration" href="{{url()->current()}}/show/{{$d->id}}">
+          <a class="iconNoDecoration" href="{{route('employees')}}/show/{{$d->id}}">
             <i class="text-success bi bi-eye" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.show')}}"></i>
           </a>
-          <a class="iconNoDecoration" href="{{url()->current()}}/download/{{$d->id}}">
+          <a class="iconNoDecoration" href="{{route('employees')}}/download/{{$d->id}}">
             <i class="text-secondary bi bi-file-earmark-arrow-down" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.download')}}"></i>
           </a>
         </td>
@@ -145,7 +145,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="newForm" method="POST" action="{{url()->current()}}/new">
+          <form id="newForm" method="POST" action="{{route('employees')}}/new">
           @csrf
           <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('employees.birthDate')}}" name="birthDate" placeholder="{{__('employees.birthDate')}}">
           <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}">
@@ -176,7 +176,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="editForm{{$d->id}}" method="POST" action="{{url()->current()}}/edit/{{$d->id}}">
+          <form id="editForm{{$d->id}}" method="POST" action="{{route('employees')}}/edit/{{$d->id}}">
             @csrf
             <input class="form-control mb-2" type="date" data-bs-toggle="tooltip" title="{{__('employees.birthDate')}}" name="birthDate" placeholder="{{__('employees.birthDate')}}" value="{{$d->birthDate}}">
             <input class="form-control mb-2" type="text" name="firstName" placeholder="{{__('employees.firstName')}}" value="{{$d->firstName}}">
