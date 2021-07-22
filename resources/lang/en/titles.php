@@ -7,5 +7,7 @@ return [
   'toDate' => 'Date to',
   'employee' => 'Employee',
   'now' => 'Still apply',
+  'edit' => 'Edit title',
+  'delete' => 'Delete title',
   '' => '',
 ];

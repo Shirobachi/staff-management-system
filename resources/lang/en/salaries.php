@@ -8,5 +8,6 @@ return [
   'empNo' => 'Employee',
   'now' => 'Still apply',
   'edit' => 'Edit :name\'s salary',
+  'delete' => 'Delete salary',
   '' => '',
 ];

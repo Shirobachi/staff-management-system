@@ -22,16 +22,20 @@
       <td>{{$d->fromDate}}</td>
       <td>{{$d->toDate}}</td>
       <td>
-        <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{str_replace(' ', '', $d->empNo)}}"></i>
+        <span data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('titles.edit')}}">
+          <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{str_replace(' ', '', $d->empNo)}}"></i>
+        </span>
         <a href="{{url()->current()}}/delete/{{$d->title}}/{{$d->fromDate}}">
-          <i class="text-danger bi bi-trash"></i>
+          <i class="text-danger bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('titles.delete')}}"></i>
         </a>
       </td>
     </tr>
     @endforeach
     <tr>
       <td style="text-align: center;" colspan="5">
-        <i class="modalLink bi bi-plus-circle-dotted" data-bs-toggle="modal" data-bs-target="#new"></i>
+        <span data-bs-toggle="tooltip" title="{{__('titles.new')}}">
+          <i class="modalLink bi bi-plus-circle-dotted" data-bs-toggle="modal" data-bs-target="#new"></i>
+        </span>
       </td>
     </tr>
   </tbody>

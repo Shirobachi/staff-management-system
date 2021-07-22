@@ -111,9 +111,11 @@
         <td>{{$d->title}}</td>
         <td>{{$d->salary}}</td>
         <td>
-          <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{$d->id}}"></i>
+          <span data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.edit')}}">
+            <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{$d->id}}"></i>
+          </span>
           <a class="iconNoDecoration" href="{{url()->current()}}/delete/{{$d->id}}">
-            <i class="text-danger bi bi-trash"></i>
+            <i class="text-danger bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.delete')}}"></i>
           </a>
           <a class="iconNoDecoration" href="{{url()->current()}}/show/{{$d->id}}">
             <i class="text-success bi bi-eye" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.show')}}"></i>
@@ -126,7 +128,9 @@
       @endforeach
       <tr>
         <td style="text-align: center;" colspan="10">
-          <i class="modalLink bi bi-plus-circle-dotted" data-bs-toggle="modal" data-bs-target="#new"></i>
+          <span data-bs-toggle="tooltip" title="{{__('employees.new')}}">
+            <i class="modalLink bi bi-plus-circle-dotted"data-bs-toggle="modal" data-bs-target="#new"></i>
+          </span>
         </td>
       </tr>
     </tbody>

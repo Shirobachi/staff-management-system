@@ -5,4 +5,5 @@ return [
   'deptName' => 'Department name',
   'new' => 'New department',
   'edit' => 'Edit department',
+  'delete' => 'Delete department',
 ];

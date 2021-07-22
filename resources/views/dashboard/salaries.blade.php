@@ -22,16 +22,20 @@
       <td>{{$d->fromDate}}</td>
       <td>{{$d->toDate}}</td>
       <td>
-        <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{$d->fromDate}}"></i>
+        <span data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('salaries.edit', ['name' => $d->empNo])}}">
+          <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{$d->fromDate}}"></i>
+        </span>
         <a href="{{url()->current()}}/delete/{{$d->fromDate}}">
-          <i class="text-danger bi bi-trash"></i>
+          <i class="text-danger bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('salaries.delete')}}"></i>
         </a>
       </td>
     </tr>
     @endforeach
     <tr>
       <td style="text-align: center;" colspan="5">
+      <span data-bs-toggle="tooltip" title="{{__('salaries.new')}}">
         <i class="modalLink bi bi-plus-circle-dotted" data-bs-toggle="modal" data-bs-target="#new"></i>
+      </span>
       </td>
     </tr>
   </tbody>

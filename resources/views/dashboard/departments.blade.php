@@ -18,16 +18,20 @@
       <td>{{$d->deptNo}}</td>
       <td>{{$d->deptName}}</td>
       <td>
-        <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{$d->deptNo}}"></i>
+        <span data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('departments.edit')}}">
+          <i class="modalLink bi bi-pencil" data-bs-toggle="modal" data-bs-target="#edit{{$d->deptNo}}"></i>
+        </span>
         <a href="{{url()->current()}}/delete/{{$d->deptNo}}">
-          <i class="text-danger bi bi-trash"></i>
+          <i class="text-danger bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('departments.delete')}}"></i>
         </a>
       </td>
     </tr>
     @endforeach
     <tr>
       <td style="text-align: center;" colspan="3">
+      <span data-bs-toggle="tooltip" title="{{__('departments.new')}}">
         <i class="modalLink bi bi-plus-circle-dotted" data-bs-toggle="modal" data-bs-target="#new"></i>
+      </span>
       </td>
     </tr>
   </tbody>
