@@ -15,7 +15,9 @@ class UserController extends Controller
      */
     public function index(request $r)
     {
-      $user = user::where('login', $r->login) -> first();
+      $user = user::where('login', $r->login) 
+                    -> orWhere('e-mail', $r->login) 
+                    -> first();
 
       if($user && Hash::check($r->password, $user->password)){
           session()->put('userID', $user->id);
