@@ -28,9 +28,9 @@ class accessController extends Controller
             return view('auth.register');
     }
 
-    function redirect($name, $data){
+    function redirect($name, $data, $title = ""){
       if(session()->has('userID')){
-        return view('listing', compact('name', 'data'));
+        return view('listing', compact('name', 'data', 'title'));
       }
       else{
         $info['desc'] = __('auth.401');
@@ -68,7 +68,7 @@ class accessController extends Controller
         -> select('firstName', 'lastName', 'deptName', 'fromDate', 'toDate')
         -> paginate(25);
 
-      return self::redirect('deptEmp', $data);
+      return self::redirect('deptEmp', $data, "Employes's departments");
     }
 
     function deptManagers(){

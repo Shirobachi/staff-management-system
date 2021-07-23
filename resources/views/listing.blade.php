@@ -1,6 +1,6 @@
 @extends('common')
 
-@section('title', __('$name' . '.title'))
+@section('title', $title ?? ucfirst($name))
 
 @section('content')
 
