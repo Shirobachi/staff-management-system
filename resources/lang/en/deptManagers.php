@@ -3,13 +3,11 @@
 return [
   'deptNo' => 'Department',
   'empNo' => 'Employee',
-
-  'firstName' => 'First name',
-  'lastName' => 'Surname',
-  'deptName' => 'Department',
-  'fromDate' => 'Date from',
-  'toDate' => 'Date to',
-  
+  'firstName' => __('common.firstName'),
+  'lastName' => __('common.lastName'),
+  'deptName' => __('common.deptName'),
+  'fromDate' => __('common.fromDate'),
+  'toDate' => __('common.toDate'),
   'new' => 'New manager',
   'now' => 'Still working', # if toDate if null mean if manager is still manager in this department
   'edit' => 'Edit manager',

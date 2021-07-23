@@ -12,5 +12,10 @@ return [
   'salaries' => 'Salaries',
   'edit' => 'Edit',
   'dept-emp' => 'Employees\' department(s)',
+  'firstName' => 'First name',
+  'lastName' => 'Surname',
+  'deptName' => 'Department',
+  'fromDate' => 'Date from',
+  'toDate' => 'Date to',
   '' => '',
 ];

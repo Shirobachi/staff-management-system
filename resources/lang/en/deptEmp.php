@@ -3,13 +3,11 @@
 return [
   'empNo' => 'Employee',
   'deptNo' => 'Department',
-  
-  'firstName' => 'First name',
-  'lastName' => 'Surname',
-  'deptName' => 'Department',
-  'fromDate' => 'Date from',
-  'toDate' => 'Date to',
-
+  'firstName' => __('common.firstName'),
+  'lastName' => __('common.lastName'),
+  'deptName' => __('common.deptName'),
+  'fromDate' => __('common.fromDate'),
+  'toDate' => __('common.toDate'),
   'now' => 'Still apply',
   'new' => 'New employee\'s department assignment',
   'edit' => 'Edit employee\'s department assignment',
