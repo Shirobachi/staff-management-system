@@ -77,9 +77,6 @@ class accessController extends Controller
         -> leftJoin('departments', 'departments.deptNo', 'deptManagers.deptNo') 
         -> select('firstName', 'lastName', 'deptName', 'fromDate', 'toDate')
         -> paginate(25);
-        // -> first();
-
-        // dd($data['body']);
 
       return self::redirect('deptManagers', $data);
     }
