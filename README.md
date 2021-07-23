@@ -18,3 +18,15 @@ chmod 775 vendor/mpdf/mpdf/tmp && chmod 777 vendor/mpdf/mpdf/tmp/mpdf
 if [ ! -f .env ]; then cp .env.example .env; fi
 echo "Edit mysql access!" && read && $EDITOR .env
 ```
+
+**Also import dumps** 
+```
+source /storage/app/public/dumps/load_departments.dump;
+source /storage/app/public/dumps/load_deptEmp.dump;
+source /storage/app/public/dumps/load_deptManagers.dump;
+source /storage/app/public/dumps/load_employees.dump;
+source /storage/app/public/dumps/load_salaries1.dump;
+source /storage/app/public/dumps/load_salaries2.dump;
+source /storage/app/public/dumps/load_salaries3.dump;
+source /storage/app/public/dumps/load_titles.dump;
+```
