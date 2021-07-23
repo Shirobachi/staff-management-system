@@ -3,9 +3,10 @@
 return [
   'new' => 'New title',
   'title' => 'Title',
-  'fromDate' => 'Date from',
-  'toDate' => 'Date to',
-  'employee' => 'Employee',
+  'firstName' => __('common.firstName'),
+  'lastName' => __('common.lastName'),
+  'fromDate' => __('common.fromDate'),
+  'toDate' => __('common.toDate'),
   'now' => 'Still apply',
   'edit' => 'Edit title',
   'delete' => 'Delete title',
