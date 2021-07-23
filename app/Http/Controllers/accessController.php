@@ -80,4 +80,14 @@ class accessController extends Controller
 
       return self::redirect('deptManagers', $data);
     }
+
+    function salaries(){
+      $data['body'] = DB::table('salaries') 
+        -> orderBy('fromDate')
+        -> leftJoin('employees', 'employees.id', 'salaries.empNo') 
+        -> select('firstName', 'lastName', 'salary', 'fromDate', 'toDate')
+        -> paginate(25);
+
+      return self::redirect('salaries', $data);
+    }
 }
