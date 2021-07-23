@@ -17,7 +17,7 @@
 
             <form method="POST" action="{{url('/')}}">
                 @csrf
-                <input required name="login" type="text" placeholder="{{__('auth.loginPlaceholder')}}" class="form-control mb-3">
+                <input required name="login" type="text" placeholder="{{__('auth.loginOrMailPlaceholder')}}" class="form-control mb-3">
                 <input required name="password" type="password" placeholder="{{__('auth.passwordPlaceholder')}}" class="form-control mb-3">
                 <button type="submit" class="btn btn-primary input-block-level form-control">{{__('auth.login')}}</button>
                 <a class="link-success" href="{{url('register')}}">{{__('auth.register')}}</a>

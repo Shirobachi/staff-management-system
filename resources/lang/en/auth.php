@@ -2,7 +2,8 @@
 
 return [
 
-    'loginPlaceholder' => 'Login or mail',
+    'loginPlaceholder' => 'Login',
+    'loginOrMailPlaceholder' => 'Login or mail',
     'passwordPlaceholder' => 'Password', 
     'rePasswordPlaceholder' => 'Re-enter your password', 
     'mailPlaceholder' => 'E-mail', 
