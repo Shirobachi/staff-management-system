@@ -6,7 +6,7 @@ return [
   'close' => 'Close',
   'add' => 'Add',
   'employees' => 'Employees',
-  'managers' => 'Managers',
+  'deptManagers' => 'Managers',
   'departments' => 'Departments',
   'titles' => 'Titles',
   'salaries' => 'Salaries',

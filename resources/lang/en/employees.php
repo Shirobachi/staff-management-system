@@ -4,13 +4,17 @@ return [
   'new' => 'New employee',
   'edit' => 'Edit employee',
   'delete' => 'Delete employee',
+
+  'id' => '#',
   'birthDate' => 'Birth date',
   'firstName' => 'First name',
   'lastName' => 'Last name',
   'gender' => 'Gender',
   'hireDate' => 'Hire date',
-  'male' => 'Male',
-  'female' => 'Female',
+  // M - male; F - female
+  'M' => 'Male',
+  'F' => 'Female',
+  
   'noDept' => 'No department assigned',
   'noFilterByDept' => 'Any department',
   'dept' => 'Department',
