@@ -2,14 +2,8 @@
 
 return [
   'salary' => 'Salary',
-  'fromDate' => 'Date from',
-  'toDate' => 'Date to',
-  'new' => 'New salary',
-  'empNo' => 'Employee',
+  'fromDate' => __('common.fromDate'),
+  'toDate' => __('common.toDate'),
   'firstName' => __('common.firstName'),
   'lastName' => __('common.lastName'),
-  'now' => 'Still apply',
-  'edit' => 'Edit :name\'s salary',
-  'delete' => 'Delete salary',
-  '' => '',
 ];

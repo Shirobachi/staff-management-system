@@ -1,10 +1,6 @@
 <?php
 
 return [
-  'new' => 'New employee',
-  'edit' => 'Edit employee',
-  'delete' => 'Delete employee',
-
   'id' => '#',
   'birthDate' => 'Birth date',
   'firstName' => 'First name',
@@ -15,13 +11,9 @@ return [
   'M' => 'Male',
   'F' => 'Female',
   'deptName' => __('common.deptName'),
-  
   'nothingFound' => 'No results!',
-  'noDept' => 'No department assigned',
   'noFilterByDept' => 'Any department',
   'dept' => 'Department',
-  'noTitle' => 'No title set',
-  'noSalary' => 'No salary set',
   'search' => 'Filter!',
   'employeeType' => 'Type of employee',
   'currentEmployee' => 'Current employee',
@@ -29,11 +21,8 @@ return [
   'salary' => 'Salary',
   'salaryMin' => 'Minimum salary',
   'salaryMax' => 'Maximum salary',
-  'title' => 'Title',
   'at' => 'at', //manage AT department of mysteries
-  'empOf' => 'employee of', // Harry Potter EMPLOYEE OF department of mysteries
   'noSalaries' => 'No salaries for that person!', // on export PDF if no salaries for specified person
   'download' => 'Download export', //on hove download icon in employees' list
   'show' => 'Show export', //on hove show icon in employees' list
-  '' => '',
 ];
