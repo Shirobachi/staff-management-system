@@ -49,7 +49,7 @@ class EmployeeController extends Controller
         'margin_footer' => 10,
       ]);
 
-      $html = \View::make('dashboard.exportEmp') -> with('data', $data);
+      $html = \View::make('exportEmp') -> with('data', $data);
       $html = $html -> render();
 
       $mpdf -> setHeader('|' . $header . '|{PAGENO}');
