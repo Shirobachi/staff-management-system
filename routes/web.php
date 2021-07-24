@@ -25,6 +25,7 @@ Route::get('logout', function () {
 });
 
 Route::get('dashboard/employees', [accessController::class, 'employees']) -> name('employees');  
+Route::post('dashboard/employees', [accessController::class, 'filterEmployees']);
 Route::get('dashboard/deptManagers', [accessController::class, 'deptManagers']) -> name('deptManagers');  
 Route::get('dashboard/departments', [accessController::class, 'departments']) -> name('departments');  
 Route::get('dashboard/titles', [accessController::class, 'titles']) -> name('titles');  
