@@ -99,7 +99,7 @@
       </tr>
     </thead>
     <tbody>
-      @foreach($data['body'] as $d)
+      @foreach($data as $d)
       <tr>
         <td>{{$d->id}}</td>
         <td>{{$d->birthDate}}</td>
@@ -167,7 +167,7 @@
   </div>
 
   <!-- Modals edit -->
-  @foreach($data['body'] as $d)
+  @foreach($data as $d)
   <div class="modal fade" id="edit{{$d->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">

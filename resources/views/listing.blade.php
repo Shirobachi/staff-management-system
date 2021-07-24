@@ -31,13 +31,13 @@
           <table class="table table-{{env(strtoupper($name) . '_COLOR', 'primary')}} table-striped table-hover">
             <thead>
               <tr>
-                @foreach (array_keys(get_object_vars($data['body'][0])) as $headCol)
+                @foreach (array_keys(get_object_vars($data[0])) as $headCol)
                   <th scope="col">{{__($name . '.' . $headCol)}}</th>
                 @endforeach
               </tr>
             </thead>
             <tbody>
-              @foreach($data['body'] as $row)
+              @foreach($data as $row)
               <tr>
                 @foreach ($row as $col)
                   <td>{{$col}}</td>
@@ -48,7 +48,7 @@
           </table>
 
           <div class="pagination justify-content-center">
-            {{$data['body'] -> links()}}
+            {{$data -> links()}}
           </div>
 
       </div>
