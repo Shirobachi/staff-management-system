@@ -41,6 +41,11 @@ class accessController extends Controller
     }
 
     function employees(){
+      $data = DB::table('employees') 
+        -> leftJoin('titles', 'titles.empNo', 'employees.id')
+        -> leftJoin('deptEmp', 'deptEmp.empNo', 'employees.id')
+        -> leftJoin('departments', 'departments.deptNo', 'deptEmp.deptNo')
+        -> select('employees.id', 'birthDate', 'firstName', 'lastName', 'gender', 'title', 'deptName', 'hireDate') 
       $data['body'] = DB::table('employees') 
         -> select('id', 'birthDate', 'firstName', 'lastName', 'gender', 'hireDate') 
         ->paginate(25);

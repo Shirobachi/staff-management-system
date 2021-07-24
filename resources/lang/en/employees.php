@@ -14,6 +14,7 @@ return [
   // M - male; F - female
   'M' => 'Male',
   'F' => 'Female',
+  'deptName' => __('common.deptName'),
   
   'noDept' => 'No department assigned',
   'noFilterByDept' => 'Any department',
