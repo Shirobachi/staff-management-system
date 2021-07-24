@@ -104,6 +104,7 @@ class accessController extends Controller
         -> leftJoin('employees', 'employees.id', 'deptEmp.empNo') 
         -> leftJoin('departments', 'departments.deptNo', 'deptEmp.deptNo') 
         -> select('firstName', 'lastName', 'deptName', 'fromDate', 'toDate')
+        -> where('deptEmp.toDate', '>=', Carbon::now())
         -> paginate(env('PAGINATE', 25));
 
       return self::redirect('deptEmp', $data, "Employee's departments");
@@ -126,6 +127,7 @@ class accessController extends Controller
         -> orderBy('fromDate')
         -> leftJoin('employees', 'employees.id', 'salaries.empNo') 
         -> select('firstName', 'lastName', 'salary', 'fromDate', 'toDate')
+        -> where('salaries.toDate', '>=', Carbon::now())
         -> paginate(env('PAGINATE', 25));
 
       return self::redirect('salaries', $data);
@@ -136,6 +138,7 @@ class accessController extends Controller
         -> orderBy('fromDate')
         -> leftJoin('employees', 'employees.id', 'titles.empNo') 
         -> select('firstName', 'lastName', 'title', 'fromDate', 'toDate')
+        -> where('titles.toDate', '>=', Carbon::now())
         -> paginate(env('PAGINATE', 25));
 
       return self::redirect('titles', $data);
