@@ -8,6 +8,7 @@ use App\Models\department;
 use App\Models\salary;
 use Illuminate\Http\Request;
 use DB;
+use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {
@@ -22,43 +23,21 @@ class EmployeeController extends Controller
         return abort(404);
 
       // get salaries
-      $data = salary::where('empNo', $id)-> get();
+      $data = salary::where('empNo', $id) -> select('salary', 'fromDate', 'toDate') -> get();
       
-      // change field to still apply if to date is null (mean still apply)
-      foreach ($data as $value)
-        if(!$value->toDate)
-          $value->toDate = __('salaries.now');
-
-      // get employee' name and title
-      $employee = DB::table('employees')
-      -> where('employees.id', $id)
+      $employee = employee::where('employees.id', $id)
       -> leftJoin('titles', 'titles.empNo', 'employees.id')
-      -> orderBy('fromDate', 'desc')
-      -> limit(1)
-      -> select('firstName', 'lastName', 'title')
+      -> leftJoin('deptEmp', 'deptEmp.empNo', 'employees.id')
+      -> leftJoin('departments', 'departments.deptNo', 'deptEmp.deptNo')
+      -> where('deptEmp.toDate', '>=', Carbon::now())
+      -> where('titles.toDate', '>=', Carbon::now())
+      -> select('firstName', 'lastName', 'deptName', 'title')
       -> first();
 
-      // get employee dept code
-      $empDept = deptEmp::where('empNo', $id) -> orderBy('fromDate', 'desc') -> first();
-
-      // if dept code exist (employee has assign dept) get dept name
-      if($empDept)
-        $dept = department::where('deptNo', $empDept -> deptNo) 
-                            -> first() 
-                            -> deptName;
-          
       // specify header depended by has or not title and dept
-      if(isset($employee->title) && isset($dept))
-        $header = $employee -> firstName . " " . $employee -> lastName. ', ' . $employee -> title . " " . __('employees.at') . " " . $dept;
-      else if(!isset($employee->title) && isset($dept))
-        $header = $employee -> firstName . " " . $employee -> lastName. ', ' . __('employees.empOf') . " " . $dept;
-      else if(isset($employee->title) && !isset($dept))
-        $header = $employee -> title . " " . $employee -> firstName . " " . $employee -> lastName;
-      else
-        $header = $employee -> firstName . " " . $employee -> lastName;
+      $header = $employee -> firstName . " " . $employee -> lastName. ', ' . $employee -> title . " " . __('employees.at') . " " . $employee->deptName;
 
       // mpdf staff
-
       $fileName = 'Export.pdf';
 
       $mpdf = new \Mpdf\Mpdf([
@@ -69,7 +48,7 @@ class EmployeeController extends Controller
         'margin_header' => 10,
         'margin_footer' => 10,
       ]);
-    
+
       $html = \View::make('dashboard.exportEmp') -> with('data', $data);
       $html = $html -> render();
 

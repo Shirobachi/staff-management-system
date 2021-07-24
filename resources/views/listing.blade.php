@@ -99,6 +99,9 @@
                 @foreach (array_keys(get_object_vars($data['body'][0])) as $headCol)
                   <th scope="col">{{__($name . '.' . $headCol)}}</th>
                 @endforeach
+                @if ($name == 'employees')
+                  <th scope="col"><i class="bi bi-gear-fill"></i></th>
+                @endif
               </tr>
             </thead>
             <tbody>
@@ -107,6 +110,16 @@
                 @foreach ($row as $col)
                   <td>{{$col}}</td>
                 @endforeach
+                <td>
+                  @if ($name == 'employees')
+                    <a class="iconNoDecoration" href="{{route('employees')}}/show/{{$row->id}}">
+                      <i class="text-success bi bi-eye" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.show')}}"></i>
+                    </a>
+                    <a class="iconNoDecoration" href="{{route('employees')}}/download/{{$row->id}}">
+                      <i class="text-secondary bi bi-file-earmark-arrow-down" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('employees.download')}}"></i>
+                    </a>
+                  @endif
+                </td>
               </tr>
               @endforeach
             </tbody>

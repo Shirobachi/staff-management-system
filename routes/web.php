@@ -24,8 +24,12 @@ Route::get('logout', function () {
   return view('auth.login', compact('info'));
 });
 
-Route::get('dashboard/employees', [accessController::class, 'employees']) -> name('employees');  
-Route::post('dashboard/employees', [accessController::class, 'filterEmployees']);
+Route::prefix('dashboard/employees')->group(function () {
+  Route::get('', [accessController::class, 'employees']) -> name('employees');  
+  Route::post('', [accessController::class, 'filterEmployees']);
+  Route::get('{mode}/{id}', [EmployeeController::class, 'index']);  
+});
+
 Route::get('dashboard/deptManagers', [accessController::class, 'deptManagers']) -> name('deptManagers');  
 Route::get('dashboard/departments', [accessController::class, 'departments']) -> name('departments');  
 Route::get('dashboard/titles', [accessController::class, 'titles']) -> name('titles');  
