@@ -16,6 +16,7 @@ return [
   'F' => 'Female',
   'deptName' => __('common.deptName'),
   
+  'nothingFound' => 'No results!',
   'noDept' => 'No department assigned',
   'noFilterByDept' => 'Any department',
   'dept' => 'Department',

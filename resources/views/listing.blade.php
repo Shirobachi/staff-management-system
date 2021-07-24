@@ -96,11 +96,17 @@
           <table class="table table-{{env(strtoupper($name) . '_COLOR', 'primary')}} table-striped table-hover">
             <thead>
               <tr>
-                @foreach (array_keys(get_object_vars($data['body'][0])) as $headCol)
+                @if (count($data['body']) > 0)
+                  @foreach (array_keys(get_object_vars($data['body'][0])) as $headCol)
                   <th scope="col">{{__($name . '.' . $headCol)}}</th>
-                @endforeach
-                @if ($name == 'employees')
+                  @endforeach
+                  @if ($name == 'employees')
                   <th scope="col"><i class="bi bi-gear-fill"></i></th>
+                  @endif
+                  @else
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>{{__('employees.nothingFound')}}</strong>
+                  </div>
                 @endif
               </tr>
             </thead>

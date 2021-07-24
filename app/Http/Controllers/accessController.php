@@ -42,6 +42,7 @@ class accessController extends Controller
     }
 
     function employees($gender = false, $salaryMin = false, $salaryMax = false, $dept = false){  
+
       $data['body'] = DB::table('employees') 
       -> leftJoin('titles', 'titles.empNo', 'employees.id')
       -> leftJoin('deptEmp', 'deptEmp.empNo', 'employees.id')
