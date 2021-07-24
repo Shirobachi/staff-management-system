@@ -84,7 +84,7 @@ class accessController extends Controller
       $gender = isset($r->male) == isset($r->female) ? false : (isset($r->male) ? $r->male : $r->female);
       $salaryMin = isset($r->salaryMin) ? $r->salaryMin : false;
       $salaryMax = isset($r->salaryMax) ? $r->salaryMax : false;
-      $dept = !isset($r->deptNo) || $r->deptNp == "NULL" ? false: $r->deptNo;
+      $dept = !isset($r->deptNo) || $r->deptNo == "NULL" ? false: $r->deptNo;
 
       return self::employees($gender, $salaryMin, $salaryMax, $dept);
     }
