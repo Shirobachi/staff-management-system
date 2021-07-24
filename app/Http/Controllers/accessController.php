@@ -105,7 +105,7 @@ class accessController extends Controller
         -> select('firstName', 'lastName', 'deptName', 'fromDate', 'toDate')
         -> paginate(env('PAGINATE', 25));
 
-      return self::redirect('deptEmp', $data, "Employes's departments");
+      return self::redirect('deptEmp', $data, "Employee's departments");
     }
 
     function deptManagers(){
@@ -117,7 +117,7 @@ class accessController extends Controller
         -> select('firstName', 'lastName', 'deptName', 'fromDate', 'toDate')
         -> paginate(env('PAGINATE', 25));
 
-      return self::redirect('deptManagers', $data, "Department's ,anagers");
+      return self::redirect('deptManagers', $data, "Department's managers");
     }
 
     function salaries(){
