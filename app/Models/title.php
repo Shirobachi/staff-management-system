@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use DB;
+use Carbon\Carbon;
+
 class title extends Model
 {
     use HasFactory;
@@ -18,5 +21,13 @@ class title extends Model
 
     // In Laravel 6.0+ make sure to also set $keyType
     protected $keyType = [ 'string', 'date' ];
-    
+
+    public static function _get(){
+      return DB::table('titles') 
+      -> orderBy('fromDate')
+      -> leftJoin('employees', 'employees.id', 'titles.empNo') 
+      -> select('firstName', 'lastName', 'title', 'fromDate', 'toDate')
+      -> where('titles.toDate', '>=', Carbon::now())
+      -> paginate(env('PAGINATE', 25));
+    }
 }

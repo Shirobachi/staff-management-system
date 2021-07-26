@@ -43,29 +43,7 @@ class accessController extends Controller
 
     function employees($gender = false, $salaryMin = false, $salaryMax = false, $dept = false){  
 
-      $data['body'] = DB::table('employees') 
-      -> leftJoin('titles', 'titles.empNo', 'employees.id')
-      -> leftJoin('deptEmp', 'deptEmp.empNo', 'employees.id')
-      -> leftJoin('departments', 'departments.deptNo', 'deptEmp.deptNo')
-      -> leftJoin('salaries', 'salaries.empNo', 'employees.id')
-      -> orderBy('employees.id')
-      -> select('employees.id', 'firstName', 'lastName', 'birthDate', 'gender', 'title', 'deptName', 'salary', 'hireDate') 
-      -> where('deptEmp.toDate', '>=', Carbon::now())
-      -> where('salaries.toDate', '>=', Carbon::now())
-      -> where('titles.toDate', '>=', Carbon::now())
-      -> when($gender, function ($query, $gender) {
-          return $query->where('employees.gender', $gender);
-        })
-      -> when($salaryMin, function ($query, $salaryMin) {
-          return $query->where('salaries.salary', '>=', $salaryMin);
-        })
-        -> when($salaryMax, function ($query, $salaryMax) {
-          return $query->where('salaries.salary', '<=', $salaryMax);
-        })
-        -> when($dept, function ($query, $dept) {
-          return $query->where('deptEmp.deptNo', $dept);
-        })
-      ->paginate(env('PAGINATE', env('PAGINATE', 25)));
+      $data['body'] = employee::_get($gender, $salaryMin, $salaryMax, $dept);
     
       foreach($data['body'] as $d)
         $d -> gender = __('employees.' . $d -> gender);
@@ -91,55 +69,31 @@ class accessController extends Controller
     }
       
     function departments(){
-      $data['body'] = DB::table('departments') 
-        -> orderBy('deptNo')
-        -> select('deptNo', 'deptName') 
-        -> paginate(env('PAGINATE', 25));
+      $data['body'] = department::_get();
 
       return self::redirect('departments', $data);
     }
 
     function deptEmp(){
-      $data['body'] = DB::table('deptEmp') 
-        -> leftJoin('employees', 'employees.id', 'deptEmp.empNo') 
-        -> leftJoin('departments', 'departments.deptNo', 'deptEmp.deptNo') 
-        -> select('firstName', 'lastName', 'deptName', 'fromDate', 'toDate')
-        -> where('deptEmp.toDate', '>=', Carbon::now())
-        -> paginate(env('PAGINATE', 25));
+      $data['body'] = deptEmp::_get();
 
       return self::redirect('deptEmp', $data, "Employee's departments");
     }
 
     function deptManagers(){
-      $data['body'] = DB::table('deptManagers') 
-        -> leftJoin('employees', 'employees.id', 'deptManagers.empNo') 
-        -> leftJoin('departments', 'departments.deptNo', 'deptManagers.deptNo') 
-        -> orderBy('employees.lastName')
-        -> orderBy('employees.firstName')
-        -> select('firstName', 'lastName', 'deptName', 'fromDate', 'toDate')
-        -> paginate(env('PAGINATE', 25));
+      $data['body'] = deptManager::_get();
 
       return self::redirect('deptManagers', $data, "Department's managers");
     }
 
     function salaries(){
-      $data['body'] = DB::table('salaries') 
-        -> orderBy('fromDate')
-        -> leftJoin('employees', 'employees.id', 'salaries.empNo') 
-        -> select('firstName', 'lastName', 'salary', 'fromDate', 'toDate')
-        -> where('salaries.toDate', '>=', Carbon::now())
-        -> paginate(env('PAGINATE', 25));
+      $data['body'] = salary::_get();
 
       return self::redirect('salaries', $data);
     }
 
     function titles(){
-      $data['body'] = DB::table('titles') 
-        -> orderBy('fromDate')
-        -> leftJoin('employees', 'employees.id', 'titles.empNo') 
-        -> select('firstName', 'lastName', 'title', 'fromDate', 'toDate')
-        -> where('titles.toDate', '>=', Carbon::now())
-        -> paginate(env('PAGINATE', 25));
+      $data['body'] = title::_get();
 
       return self::redirect('titles', $data);
     }
