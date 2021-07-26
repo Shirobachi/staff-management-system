@@ -38,4 +38,15 @@ class employee extends Model
         })
       ->paginate(env('PAGINATE', env('PAGINATE', 25)));
   }
+
+  public static function export($id) {
+    return employee::where('employees.id', $id)
+    -> leftJoin('titles', 'titles.empNo', 'employees.id')
+    -> leftJoin('deptEmp', 'deptEmp.empNo', 'employees.id')
+    -> leftJoin('departments', 'departments.deptNo', 'deptEmp.deptNo')
+    -> where('deptEmp.toDate', '>=', Carbon::now())
+    -> where('titles.toDate', '>=', Carbon::now())
+    -> select('firstName', 'lastName', 'deptName', 'title')
+    -> first();
+  }
 }

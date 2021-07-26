@@ -25,14 +25,7 @@ class EmployeeController extends Controller
       // get salaries
       $data = salary::where('empNo', $id) -> select('salary', 'fromDate', 'toDate') -> get();
       
-      $employee = employee::where('employees.id', $id)
-      -> leftJoin('titles', 'titles.empNo', 'employees.id')
-      -> leftJoin('deptEmp', 'deptEmp.empNo', 'employees.id')
-      -> leftJoin('departments', 'departments.deptNo', 'deptEmp.deptNo')
-      -> where('deptEmp.toDate', '>=', Carbon::now())
-      -> where('titles.toDate', '>=', Carbon::now())
-      -> select('firstName', 'lastName', 'deptName', 'title')
-      -> first();
+      $employee = employee::export($id);
 
       // specify header depended by has or not title and dept
       $header = $employee -> firstName . " " . $employee -> lastName. ', ' . $employee -> title . " " . __('employees.at') . " " . $employee->deptName;
