@@ -31,4 +31,8 @@ class salary extends Model
       -> where('salaries.toDate', '>=', Carbon::now())
       -> paginate(env('PAGINATE', 25));
     }
+
+    public static function export($id){
+      return salary::where('empNo', $id) -> select('salary', 'fromDate', 'toDate') -> get();
+    }
 }
