@@ -5,12 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\accessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\deptManagerController;
-use App\Http\Controllers\TitleController;
-use App\Http\Controllers\SalaryController;
-use App\Http\Controllers\DeptEmpController;
-
 
 Route::get('', [accessController::class, 'login']);
 Route::get('register', [accessController::class, 'register']);
