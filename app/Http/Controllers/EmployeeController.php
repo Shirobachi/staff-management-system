@@ -25,6 +25,9 @@ class EmployeeController extends Controller
       // get salaries
       $data = salary::export($id);
       
+      if (count ($data) == 0)
+        return abort(404);
+
       $employee = employee::export($id);
 
       // specify header depended by has or not title and dept
