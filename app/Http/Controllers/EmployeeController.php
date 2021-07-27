@@ -64,19 +64,9 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(request $r)
+    public function create()
     {
-      $r->validate([
-        'birthDate' => 'date',
-        'firstName' => 'min:3|max:14',
-        'lastName' => 'min:3|max:16',
-        'gender' => 'in:M,F',
-        'hireDate' => 'date'
-      ]);
-
-      employee::create($r->all());
-
-      return redirect(url()->previous());
+      //
     }
 
     /**
@@ -85,7 +75,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
     }
@@ -96,7 +86,7 @@ class EmployeeController extends Controller
      * @param  \App\Models\employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(employee $employee)
+    public function show()
     {
         //
     }
@@ -107,27 +97,9 @@ class EmployeeController extends Controller
      * @param  \App\Models\employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, request $r)
+    public function edit()
     {
-      $r->validate([
-        'birthDate' => 'date',
-        'firstName' => 'min:3|max:14',
-        'lastName' => 'min:3|max:16',
-        'gender' => 'in:M,F',
-        'hireDate' => 'date'
-      ]);
-
-      $temp = employee::findOrFail($id);
-
-      $temp -> birthDate = $r->birthDate;
-      $temp -> firstName = $r->firstName;
-      $temp -> lastName = $r->lastName;
-      $temp -> gender = $r->gender;
-      $temp -> hireDate = $r->hireDate;
-
-      $temp -> save();
-
-      return redirect(url()->previous());
+      // 
     }
 
     /**
@@ -137,7 +109,7 @@ class EmployeeController extends Controller
      * @param  \App\Models\employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, employee $employee)
+    public function update()
     {
         //
     }
@@ -148,10 +120,8 @@ class EmployeeController extends Controller
      * @param  \App\Models\employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-      employee::findOrFail($id)->delete();
-
-      return redirect(url()->previous());
+      //
     }
 }
